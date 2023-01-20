@@ -3,15 +3,11 @@ library(here)
 
 project_setup <-function(){
   
-  if(!dir.exists("data")){dir.create(here::here("data"))}
-  if(!dir.exists("Output")){dir.create(here::here("Output"))}
-  if(!dir.exists("Shapefiles")){dir.create(here::here("Shapefiles"))}
-  if(!dir.exists("Checks")){dir.create(here::here("Checks"))}
-  if(!dir.exists("Maps")){dir.create(here::here("Maps"))}
-  if(!dir.exists("Archive")){dir.create(here::here("Archive"))}
-  #Create sub-folders within folders. This sub folder is nested under Archive folder
-  if(dir.exists("Archive")){dir.create(here::here("/home/pablo/Documents/Pablo/Rprojects/Rwarehouse/Archive/subfolder_new"))}
-  
+  if(!dir.exists("data")){dir.create(here("data"))}
+  if(!dir.exists("plots")){dir.create(here("plots"))}
+  if(!dir.exists("Archive")){dir.create(here("Archive"))}
+  if(!dir.exists("Test")){dir.create(here("Test"))}
+
 } 
 
 # Run code below to use function and create folder structure
