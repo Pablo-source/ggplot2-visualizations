@@ -14,7 +14,7 @@ RTTdata <- function() {
   
   if(!dir.exists("data")){dir.create("data")}
   
-  # Download master.zip file APRIL 2022
+  # Download master.zip file APRIL 2022 d
   # And unzip April file as .csv file
   download.file(
     url = 'https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2022/06/Full-CSV-data-file-Apr22-ZIP-3300K-57873-1.zip',
