@@ -1,7 +1,7 @@
 
 library(here)
 
-project_setup <-function(){
+project_setup <-function(){ 
   
   if(!dir.exists("data")){dir.create(here("data"))}
   if(!dir.exists("plots")){dir.create(here("plots"))}
