@@ -113,3 +113,5 @@ As we can see below, the Excel file has been downloaded to our data folder
 ![Excel file downloaded](C:/R_WDP/ggplot2-visualizations/plots/Download XLSX from URL.png)
 
 ## 4. Import Excel file into R 
+
+We need to skip some rows and select just a handful of columns from the original Excel file we import into R. We use 
