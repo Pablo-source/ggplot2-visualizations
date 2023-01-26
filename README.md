@@ -1,6 +1,6 @@
 # ggplot2-visualizations
 
-This is a project designed to create a of different visualizations using GGPLOT2 package
+This is a project designed to display a set of visualizations using GGPLOT2 package. Using different geoms and also creating small multiple plots using facet_wrap to split initial RTT data by other set of variables.
 
 It aims to present different ways of representing data. It will use RTT data from NHS England, Consultant-led Referral to Treatment Waiting Times Data, to display several ways of presenting Time Series data using visualizations in R using GGPLOT2 package. 
 
