@@ -2,7 +2,11 @@
 title: "GGPLOT2 plots using RTT data"
 author: "PLR"
 date: "2023-01-23"
-output: html_document
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    toc_collapsed: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -109,11 +113,3 @@ As we can see below, the Excel file has been downloaded to our data folder
 ![Excel file downloaded](C:/R_WDP/ggplot2-visualizations/plots/Download XLSX from URL.png)
 
 ## 4. Import Excel file into R 
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
