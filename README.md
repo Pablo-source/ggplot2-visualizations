@@ -37,3 +37,8 @@ This section contains information on Consultant-led Referral To Treatment (RTT) 
 Monthly RTT waiting times data has been published since March 2007. Initially data was only published for patients whose RTT pathways ended in admission for treatment (admitted pathways). Non-admitted pathway data (patients whose RTT pathways ended for reasons other than admission for treatment) has been published since August 2007. 
 
 <https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/>
+
+This project is being build using RStudio to commit directly all script changes to the ggplot2-visualizations GitHub repo. 
+
+![Updating R scripts from Github](https://user-images.githubusercontent.com/76554081/215121553-71649b92-ea00-45d7-a100-b3857e37ddd6.jpg)
+
