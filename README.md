@@ -6,7 +6,7 @@ It aims to present different ways of representing data. It will use NHS data fro
 
 Data has been downloaded from <https://www.england.nhs.uk/statistics>, these statistics are publicly available. 
 
-Original downloaded files from the above website are Excel files .xlsx, and I have used this set of packages  pacman::p_load(readxl,here,dplyr,janitor) to conduct the initial data pre-processing, to arange the data in a way that will be easy to use when creating a set of plots. 
+Original downloaded files from the above website are Excel files .xlsx, and I have used this set of packages  installed using packman package manager pacman::p_load(readxl,here,dplyr,janitor) to conduct the initial data pre-processing, to arange the data in a way that will be easy to use when creating a set of plots. 
 
 <https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/>
 
