@@ -3,7 +3,7 @@
 # 1. Load required packages 
 pacman::p_load(readxl,here,dplyr,janitor)
 
-# Check existing files on data folder 
+# Check existing files in data project folder
 
 Excel_files_xls <- list.files(path = "./data", pattern = "xls$")
 Excel_files_xls
