@@ -5,6 +5,7 @@
 
 
 # This is an .xls file extension, Excel 97-Excel 2003 Workbook , The Excel 97 - Excel 2003 Binary file format (BIFF8).
+# We can import both .xls and .xlsx file using download.file() function from readxl package
 
 pacman::p_load(readxl,here,dplyr,janitor) 
   
