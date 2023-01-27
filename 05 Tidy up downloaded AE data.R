@@ -90,8 +90,9 @@ AE_data_plot <- AE_data_subset %>%
                 select(-x1)
 AE_data_plot
 
-# 4.2 THen we rename remainig variables to shorten their names
+# 4.2 Then we rename remaining variables to shorten their names
 
+# SUbset Attendances data to produce our first plot
 AE_plot_prep <- AE_data_plot %>% 
                 select(
                   period,
@@ -102,3 +103,6 @@ AE_plot_prep <- AE_data_plot %>%
                   
                 ) 
 AE_plot_prep
+
+# Save AE Attendances variables in a new data set
+AEATT_plot <- AE_plot_prep
