@@ -1,9 +1,39 @@
 # ggplot2-visualizations
 
-This is a project designed to display a set of visualizations using GGPLOT2 package. Using different geoms and also creating small multiple plots using facet_wrap to split initial  data by other set of variables.
+This is a project designed to display a set of visualizations using GGPLOT2 package. Using different geoms and also creating small multiple plots using facet_wrap to split initial data by other set of variables.
 
-It aims to present different ways of representing data. It will use RTT data from NHS England, Consultant-led Referral to Treatment Waiting Times Data, to display several ways of presenting Time Series data using visualizations in R using GGPLOT2 package. 
+It aims to present different ways of representing data. It will use NHS data from England,to display several ways of presenting Time Series data using R. 
 
-Data has been downloaded from <https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/rtt-data-2022-23/>, these statistics are publicly available. 
+Data has been downloaded from <https://www.england.nhs.uk/statistics>, these statistics are publicly available. 
 
 Original downloaded files from the above website are Excel files .xlsx, and I have used this set of packages  pacman::p_load(readxl,here,dplyr,janitor) to conduct the initial data pre-processing, to arange the data in a way that will be easy to use when creating a set of plots. 
+
+<https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/>
+
+## A&E Attendances and Emergency Admissions
+
+The Weekly and Monthly A&E Attendances and Emergency Admissions collection collects the total number of attendances in the specified period for all A&E types, including Minor Injury Units and Walk-in Centres, and of these, the number discharged, admitted or transferred within four hours of arrival.
+
+<https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/>
+
+We can download the Unadjusted: Monthly A&E Time Series April 2019 (XLS 364K) file:
+
+1. Open your web-browser browser
+
+2. Go to Applications menu top right corner
+
+3. Select More Tools > Page Source
+
+4. The HTML code will be displayed. Then we need to press CTRL +F to open the find option on the HTML page, as we are looking for “Time series” word within the main website
+
+This allows us to locate the .xls file for Unadjusted Time Series data and to download it from R. 
+
+<p><a href="https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2019/11/Timeseries-monthly-Unadjusted-9kidr.xls">Unadjusted: Monthly A&amp;E Time series April 2019 (XLS, 364K)</a><br />
+
+## Consultant-led Referral to Treatment Waiting Times
+
+This section contains information on Consultant-led Referral To Treatment (RTT) waiting times, which monitor the length of time from referral through to elective treatment.
+
+Monthly RTT waiting times data has been published since March 2007. Initially data was only published for patients whose RTT pathways ended in admission for treatment (admitted pathways). Non-admitted pathway data (patients whose RTT pathways ended for reasons other than admission for treatment) has been published since August 2007. 
+
+<https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/>
