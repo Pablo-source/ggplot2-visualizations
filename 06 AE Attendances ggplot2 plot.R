@@ -40,7 +40,7 @@ TypeI_att_plot <- AEATT_plot %>%
 TypeI_att_plot
 
 
-# 2. Add color to line 
+# 2. Add color to line  
 
 # Interesting resource from nhs-R-community GitHub repo with 
 # NHSR Color Themes
@@ -61,4 +61,4 @@ TypeI_att_plot <- AEATT_plot %>%
 TypeI_att_plot
 
 # Save plot
-ggsave("plots/A&E_Attendances_Type_1_Departments-Major_A&E_England.png", width = 6, height = 4)
+ggsave("plots/A&E_Attendances_Type_1_England.png", width = 6, height = 4)
