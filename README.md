@@ -1,6 +1,6 @@
 # ggplot2-visualizations
 
-This is a project designed to display a set of visualizations using GGPLOT2 package. Using different geoms and also creating small multiple plots using facet_wrap to split initial data by other set of variables.
+This is a project designed to display a set of visualizations using GGPLOT2 package. Using different geoms and also creating small multiple plots using facet_wrap to split initial data by other set of variables. Using RStudio integrated with GitHub to commit all changes from my IDE.
 
 It aims to present different ways of representing data. It will use NHS data from England,to display several ways of presenting Time Series data using R. 
 
