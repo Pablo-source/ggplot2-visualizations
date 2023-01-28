@@ -22,12 +22,11 @@ Excel_tabs
 # Two examples
 # Skip certain rows of data: 
 # Myocardial_infarction <- read_excel(
-              here("data", "CCG_1.17_I01968_D.xlsx"), 
-              sheet = 3, skip =13) %>% 
-              clean_names()
+#              here("data", "CCG_1.17_I01968_D.xlsx"), 
+#              sheet = 3, skip =13) %>% 
+#              clean_names()
 # How to select rows of data 
-Tab10202in <- read_excel(here("Input_files",DataA),sheet = 1,range = "C10:F18",skip = 1,na = "")
-
+#Tab10202in <- read_excel(here("Input_files",DataA),sheet = 1,range = "C10:F18",skip = 1,na = "")
 
 ### Importing our main RTT data
 

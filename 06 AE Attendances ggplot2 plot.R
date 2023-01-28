@@ -1,4 +1,5 @@
-# 06 AE Attendances ggplot2 plot
+# 06 AE Attendances ggplot2 plot.R
+
 # We start by Loading previous data set
 # AEATT_plot 
 names(AEATT_plot)
@@ -49,6 +50,27 @@ TypeI_att_plot
 # Save plot
 ggsave("plots/A&E_Attendances_Type_1_England.png", width = 6, height = 4)
 
-# 3. Add new geom geom_dot() 
+# 3. Add new geom to plot geom_point()  
+# geom_point()
+#   Parameters:  
+#       show.legend: logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes,
 
+# Source or NHS England colors
+# https://www.england.nhs.uk/nhsidentity/identity-guidelines/colours/
 
+# I include this time two hues of NHS blues in the plot
+# NHS Bright Blue #0072CE
+# NHS Aqua Blue #00A9CE
+
+TypeI_dot_line_plot <- AEATT_plot %>% 
+                  select(period, type_1_Major_att) %>% 
+                  ggplot(aes(x = period, y = type_1_Major_att)) +
+                  geom_line(color="#0072CE", size=1,  linetype=1) +
+                  # Included new geom
+                  geom_point(fill="#00A9CE",shape=21,show.legend = FALSE) +
+                  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+                       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/")
+
+TypeI_dot_line_plot
+
+ggsave("plots/A&E_Attendances_Type_1_England_line_point_geom.png", width = 6, height = 4)
