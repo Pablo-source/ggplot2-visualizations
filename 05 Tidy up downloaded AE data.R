@@ -84,7 +84,6 @@ AE_data_subset<- read_excel(
 AE_data_subset
 
 # 4. Rename variables in preparation for creating a ggplot2 plot
-
 # 4.1 First we remove X1 extra variable
 AE_data_plot <- AE_data_subset %>% 
                 select(-x1)

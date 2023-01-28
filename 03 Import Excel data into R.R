@@ -21,7 +21,7 @@ Excel_tabs
 
 # Two examples
 # Skip certain rows of data: 
-Myocardial_infarction <- read_excel(
+# Myocardial_infarction <- read_excel(
               here("data", "CCG_1.17_I01968_D.xlsx"), 
               sheet = 3, skip =13) %>% 
               clean_names()
