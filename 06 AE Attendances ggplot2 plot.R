@@ -181,7 +181,7 @@ TypeI_theme_classic  <- AEATT_plot %>%
 
 TypeI_theme_classic
 
-# Theme dark 
+# Theme dark (last of base themes)
 # theme_dark() 
 
 TypeI_theme_dark  <- AEATT_plot %>% 
@@ -205,4 +205,4 @@ GRID_PLOT <- grid.arrange(TypeI_theme_bw,TypeI_theme_light,
              TypeI_theme_classic,TypeI_theme_dark,
              ncol=4)
 
-ggsave("plots/A&E_Attendances_Grid_Arrange_themes_gallery.png", width = 6, height = 4)
+ggsave(GRID_PLOT,"plots/A&E_Attendances_Grid_Arrange_themes_gallery.png", width = 6, height = 4)
