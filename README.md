@@ -42,3 +42,8 @@ This project is being build using RStudio to commit directly all script changes 
 
 ![Updating R scripts from Github](https://user-images.githubusercontent.com/76554081/215121553-71649b92-ea00-45d7-a100-b3857e37ddd6.jpg)
 
+Some plots produced include themes, in the plots folder there is a collection of all plots iterations using GGPLOT2
+
+![AE Attendances aspect ratio grid](https://user-images.githubusercontent.com/76554081/215345149-b23688a5-8e00-4ba0-99e9-c82438d9bbf9.png)
+
+
