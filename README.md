@@ -44,5 +44,6 @@ This project is being build using RStudio to commit directly all script changes 
 
 Some plots produced include themes, in the plots folder there is a collection of all plots iterations using GGPLOT2
 
-![Grid_arrange](https://user-images.githubusercontent.com/76554081/215344391-1a95d97d-124a-450a-8199-89eaee53f0ad.png)
+![AE Attendances aspect ratio grid](https://user-images.githubusercontent.com/76554081/215345149-b23688a5-8e00-4ba0-99e9-c82438d9bbf9.png)
+
 
