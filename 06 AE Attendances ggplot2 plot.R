@@ -205,4 +205,4 @@ GRID_PLOT <- grid.arrange(TypeI_theme_bw,TypeI_theme_light,
              TypeI_theme_classic,TypeI_theme_dark,
              ncol=4)
 
-ggsave("plots/A&E_Attendances_Grid_Arrange_themes_gallery.png", width = 6, height = 4)
+ggsave("plots/A&E_Attendances_Grid_Arrange_themes_gallery_02.png", width = 1311, height = 4)
