@@ -42,3 +42,7 @@ This project is being build using RStudio to commit directly all script changes 
 
 ![Updating R scripts from Github](https://user-images.githubusercontent.com/76554081/215121553-71649b92-ea00-45d7-a100-b3857e37ddd6.jpg)
 
+Some plots produced include themes, in the plots folder there is a collection of all plots iterations using GGPLOT2
+
+![Grid_arrange](https://user-images.githubusercontent.com/76554081/215344391-1a95d97d-124a-450a-8199-89eaee53f0ad.png)
+
