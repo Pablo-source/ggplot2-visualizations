@@ -59,7 +59,7 @@ ggsave("plots/A&E_Attendances_Type_1_England.png", width = 6, height = 4)
 # https://www.england.nhs.uk/nhsidentity/identity-guidelines/colours/
 
 # I include this time two hues of NHS blues in the plot
-# NHS Bright Blue #0072CE
+# NHS Bright Blue #0072CE ff
 # NHS Aqua Blue #00A9CE
 
 TypeI_dot_line_plot <- AEATT_plot %>% 
