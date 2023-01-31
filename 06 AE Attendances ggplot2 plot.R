@@ -70,7 +70,7 @@ TypeI_att_plot <- AEATT_plot %>%
 TypeI_att_plot
 
 # Save plot
-ggsave("plots/A&E_Attendances_Type_1_England.png", width = 6, height = 4)
+ggsave("plots/01_A&E_Attendances_Type_1_England.png", width = 6, height = 4)
 
 # 3. Add new geom to plot geom_point()  
 # geom_point()
@@ -95,7 +95,7 @@ TypeI_dot_line_plot <- AEATT_plot %>%
 
 TypeI_dot_line_plot
 
-ggsave("plots/A&E_Attendances_Type_1_England_line_point_geom.png", width = 6, height = 4)
+ggsave("plots/02_A&E_Attendances_Type_1_England_line_point_geom.png", width = 6, height = 4)
 
 # 4. Modify X and Y axis labels
 Axis_labels_plot <- AEATT_plot %>% 
@@ -112,7 +112,7 @@ Axis_labels_plot <- AEATT_plot %>%
                           
 Axis_labels_plot
 
-ggsave("plots/A&E_Attendances_Type_1_England_aixs_titles.png", width = 6, height = 4)
+ggsave("plots/03_A&E_Attendances_Type_1_England_aixs_titles.png", width = 6, height = 4)
 
 # 5. Remove tick marks 
 # theme(axis.ticks = element_blank())
@@ -132,7 +132,7 @@ Axis_ticks_removed <- AEATT_plot %>%
 
 Axis_ticks_removed
 
-ggsave("plots/A&E_Attendances_Type_1_England_Axis_ticks_removed.png", width = 6, height = 4)
+ggsave("plots/04_A&E_Attendances_Type_1_England_Axis_ticks_removed.png", width = 6, height = 4)
 
 # 6. Include theme 
 # Arrange different plots using gridExtra
@@ -218,7 +218,7 @@ GRID_PLOT <- grid.arrange(TypeI_theme_bw,TypeI_theme_light,
              TypeI_theme_classic,TypeI_theme_dark,
              ncol=4)
 
-ggsave("plots/A&E_Attendances_Grid_Arrange_themes_gallery_02.png", width = 1311, height = 4)
+ggsave("plots/05_A&E_Attendances_Grid_Arrange_themes_gallery_02.png", width = 6, height = 4)
 
 # 7. Modify continuous Y axis
 
@@ -247,7 +247,7 @@ TypeI_cont_y_axis  <- AEATT_plot %>%
 
 TypeI_cont_y_axis
 
-ggsave("plots/A&E_Attendances_scale_y_continuous.png", width = 6, height = 4)
+ggsave("plots/06_A&E_Attendances_scale_y_continuous.png", width = 6, height = 4)
 
 # 8. Add a smooth line to the line chart
 TypeI_smooth_line   <- AEATT_plot %>% 
@@ -270,7 +270,7 @@ TypeI_smooth_line   <- AEATT_plot %>%
 
 TypeI_smooth_line
 
-ggsave("plots/A&E_Attendances_smooth_line.png", width = 6, height = 4)
+ggsave("plots/07_A&E_Attendances_smooth_line.png", width = 6, height = 4)
 
 # 8.1 tailor that smooth line
 # Parameters we can use with the geom_smooth() function:
