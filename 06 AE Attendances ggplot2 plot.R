@@ -12,6 +12,13 @@ head(AEATT_plot)
 # type_3_other_att = type_3_departments_other_a_e_minor_injury_unit,
 # total_att = total_attendances
 
+
+# Create initial plot
+#  2. Add color to line  
+#  3. Add new geom to plot using geom_point()  
+
+
+
 # 1. Initial plot using Type I attendances data across time
 library(tidyverse)
 head(AEATT_plot)
