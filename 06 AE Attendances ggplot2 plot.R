@@ -1,6 +1,6 @@
 # 06 AE Attendances ggplot2 plot.R
 
-# We start by Loading previous data set 
+# We start by Loading previous data set.
 # AEATT_plot 
 names(AEATT_plot)
 head(AEATT_plot)
