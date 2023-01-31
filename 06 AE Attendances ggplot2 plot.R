@@ -247,7 +247,7 @@ TypeI_cont_y_axis
 
 ggsave("plots/A&E_Attendances_scale_y_continuous.png", width = 6, height = 4)
 
-# 8. Add a smooth line to the plot 
+# 8. Add a smooth line to the line chart
 TypeI_smooth_line   <- AEATT_plot %>% 
   select(period, type_1_Major_att) %>% 
   ggplot(aes(x = period, y = type_1_Major_att)) +
