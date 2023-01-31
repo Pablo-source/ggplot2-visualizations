@@ -12,7 +12,7 @@ head(AEATT_plot)
 # type_3_other_att = type_3_departments_other_a_e_minor_injury_unit,
 # total_att = total_attendances
 
-
+# Features added to initial ggplot() object
 # 1. Create initial ggplot() object
 # 2. Add color to line  
 # 3. Add new geom to plot using geom_point()  
@@ -21,6 +21,8 @@ head(AEATT_plot)
 # 6. Include theme 
 #     Arrange all themes into a single output image using grid-arrange()
 # 7. Modify continuous Y axis
+# 8. Add a smooth line to the line chart
+
 
 # 1. Initial plot using Type I attendances data across time
 library(tidyverse)
