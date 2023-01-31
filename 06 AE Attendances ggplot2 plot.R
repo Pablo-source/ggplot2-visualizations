@@ -13,16 +13,20 @@ head(AEATT_plot)
 # total_att = total_attendances
 
 
-# Create initial plot
-#  2. Add color to line  
-#  3. Add new geom to plot using geom_point()  
-
-
+# 1. Create initial ggplot() object
+# 2. Add color to line  
+# 3. Add new geom to plot using geom_point()  
+# 4. Modify X and Y axis labels
+# 5. Remove tick marks 
+# 6. Include theme 
+#     Arrange all themes into a single output image using grid-arrange()
+# 7. Modify continuous Y axis
 
 # 1. Initial plot using Type I attendances data across time
 library(tidyverse)
 head(AEATT_plot)
 names(AEATT_plot)
+
 #[1] "period"                "type_1_Major_att"      "type_2_Single_esp_att"
 #[4] "type_3_other_att"      "total_att" 
 
@@ -213,3 +217,58 @@ GRID_PLOT <- grid.arrange(TypeI_theme_bw,TypeI_theme_light,
              ncol=4)
 
 ggsave("plots/A&E_Attendances_Grid_Arrange_themes_gallery_02.png", width = 1311, height = 4)
+
+# 7. Modify continuous Y axis
+
+MIN_att_value <- min(AEATT_plot$type_1_Major_att)
+MIN_att_value
+# [1] 1053707
+MAX_att_value <- max(AEATT_plot$type_1_Major_att)
+MAX_att_value
+# [1] 1373061
+
+TypeI_cont_y_axis  <- AEATT_plot %>% 
+                          select(period, type_1_Major_att) %>% 
+                          ggplot(aes(x = period, y = type_1_Major_att)) +
+                          geom_line(color="#0072CE", size=1,  linetype=1) +
+                          # Included new geom
+                          geom_point(fill="#00A9CE",shape=21,show.legend = FALSE) +
+                          labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+                               subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+                               # Change X and Y axis labels
+                               x = "Period", 
+                               y = "Type I Attendances") +
+                          theme (axis.ticks = element_blank()) +
+                          theme_light() +
+                          # Define new y axis breaks (min, max and numbe of breaks between those values)
+                          scale_y_continuous(limits=c(1010000, 1400000),n.breaks=12)
+
+TypeI_cont_y_axis
+
+ggsave("plots/A&E_Attendances_scale_y_continuous.png", width = 6, height = 4)
+
+# 8. Add a smooth line to the plot 
+TypeI_smooth_line   <- AEATT_plot %>% 
+  select(period, type_1_Major_att) %>% 
+  ggplot(aes(x = period, y = type_1_Major_att)) +
+  geom_line(color="#0072CE", size=1,  linetype=1) +
+  # Included new geom
+  geom_point(fill="#00A9CE",shape=21,show.legend = FALSE) +
+  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       # Change X and Y axis labels
+       x = "Period", 
+       y = "Type I Attendances") +
+  theme (axis.ticks = element_blank()) +
+  theme_light() +
+  # Define new y axis breaks (min, max and numbe of breaks between those values)
+  scale_y_continuous(limits=c(1010000, 1400000),n.breaks=12) +
+  # Add a smooth line to the plot
+  geom_smooth()
+
+TypeI_smooth_line
+
+ggsave("plots/A&E_Attendances_smooth_line.png", width = 6, height = 4)
+
+# 8.1 tailor that smooth line
+
