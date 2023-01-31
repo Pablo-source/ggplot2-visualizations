@@ -38,9 +38,13 @@ Monthly RTT waiting times data has been published since March 2007. Initially da
 
 <https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/>
 
+## RStudio project linked to GitHub
+
 This project is being build using RStudio to commit directly all script changes to the ggplot2-visualizations GitHub repo. 
 
 ![Updating R scripts from Github](https://user-images.githubusercontent.com/76554081/215121553-71649b92-ea00-45d7-a100-b3857e37ddd6.jpg)
+
+## Sample of some GGPLOT2 plots created in this repo 
 
 Some plots produced include themes, in the plots folder there is a collection of all plots iterations using GGPLOT2
 
