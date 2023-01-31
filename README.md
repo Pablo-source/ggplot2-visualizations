@@ -50,4 +50,8 @@ Some plots produced include themes, in the plots folder there is a collection of
 
 ![AE Attendances aspect ratio grid](https://user-images.githubusercontent.com/76554081/215345149-b23688a5-8e00-4ba0-99e9-c82438d9bbf9.png)
 
+Example of a smooth line added to the AE Type I Attendances plot and tailored y axis labels
+
+![A E_Attendances_smooth_line](https://user-images.githubusercontent.com/76554081/215727115-299ff621-02f9-4e09-88d5-78c097ae0c1a.png)
+
 
