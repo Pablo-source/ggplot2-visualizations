@@ -47,12 +47,17 @@ This project is being build using RStudio to commit directly all script changes 
 ## Sample of some GGPLOT2 plots created in this repo 
 
 Some plots produced include themes, in the plots folder there is a collection of all plots iterations using GGPLOT2
+  
+Using library(gridExtra) to arrange below plots: grid.arrange(TypeI_theme_bw,TypeI_theme_light,TypeI_theme_classic,TypeI_theme_dark,ncol=4)
+
 
 ![AE Attendances aspect ratio grid](https://user-images.githubusercontent.com/76554081/215345149-b23688a5-8e00-4ba0-99e9-c82438d9bbf9.png)
 
 Example of a smooth line added to the AE Type I Attendances plot and tailored y axis labels
 
-Tailored geom smooth by using these parameters (se = TRUE,FALSE, display SE; span = 0.1 Use span to control the "wiggliness" of the default loess smoother)  geom_smooth(span = 0.1,se = TRUE, size = 0.8)
+Tailored geom smooth by using these parameters (se = TRUE,FALSE, display SE; span = 0.1 Use span to control the "wiggliness" of the default loess smoother) 
+
+geom_smooth(span = 0.1,se = TRUE, size = 0.8)
 
 ![08 AE Attendances custom geom_smooth](https://user-images.githubusercontent.com/76554081/215996970-5de470de-6e4c-4e17-b2dc-29bad4c06056.png)
 
