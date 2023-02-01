@@ -26,6 +26,8 @@ head(AEATT_plot)
 
 # 1. Initial plot using Type I attendances data across time
 library(tidyverse)
+library(gridExtra)
+
 head(AEATT_plot)
 names(AEATT_plot)
 
@@ -136,7 +138,7 @@ ggsave("plots/04_A&E_Attendances_Type_1_England_Axis_ticks_removed.png", width =
 
 # 6. Include theme 
 # Arrange different plots using gridExtra
-library(gridExtra)
+
 
 # Theme bw
 # theme_bw()
@@ -272,6 +274,59 @@ TypeI_smooth_line
 
 ggsave("plots/07_A&E_Attendances_smooth_line.png", width = 6, height = 4)
 
-# 8.1 tailor that smooth line
+# 9 tailor that smooth line
 # Parameters we can use with the geom_smooth() function:
 # span = 0.3, 
+
+TypeI_smooth_line   <- AEATT_plot %>% 
+  select(period, type_1_Major_att) %>% 
+  ggplot(aes(x = period, y = type_1_Major_att)) +
+  geom_line(color="#0072CE", size=1,  linetype=1) +
+  # Included new geom
+  geom_point(fill="#00A9CE",shape=21,show.legend = FALSE) +
+  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       # Change X and Y axis labels
+       x = "Period", 
+       y = "Type I Attendances") +
+  theme (axis.ticks = element_blank()) +
+  theme_light() +
+  # Define new y axis breaks (min, max and numbe of breaks between those values)
+  scale_y_continuous(limits=c(1010000, 1400000),n.breaks=12) +
+  # Add a smooth line to the plot
+  geom_smooth(span = 0.1, se = TRUE, size = 0.8)
+
+TypeI_smooth_line
+
+ggsave("plots/09_A&E_Attendances_smooth_line_tailored.png", width = 6, height = 4)
+
+# 10. Format Title and Sub title
+
+TypeI_title_format   <- AEATT_plot %>% 
+  select(period, type_1_Major_att) %>% 
+  ggplot(aes(x = period, y = type_1_Major_att)) +
+  geom_line(color="#0072CE", size=1,  linetype=1) +
+  # Included new geom
+  geom_point(fill="#00A9CE",shape=21,show.legend = FALSE) +
+  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       # Change X and Y axis labels
+       x = "Period", 
+       y = "Type I Attendances") +
+  theme_light() +
+  geom_smooth(se = TRUE, span = 0.1) +
+  theme(
+    axis.ticks = element_blank(),
+    # A value of “plot” means the titles/caption are aligned to the entire plot
+    # Apply format to title plot
+    plot.title.position = "plot", 
+    plot.title = element_text(margin = margin (b=10), colour = "steelblue1", face = "bold"), # Skyblue1 colour
+    # Apply format to sub-title
+    plot.subtitle = element_text(
+      size =8, colour = "palegreen3", face = "bold")
+  ) 
+
+TypeI_title_format
+ggsave("plots/10_AE_Attendances_format_title_subtitle.png", width = 6, height = 4)
+
+
