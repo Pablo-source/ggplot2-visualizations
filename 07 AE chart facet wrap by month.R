@@ -76,7 +76,7 @@ select(
 
 AE_Att_monthp
 
-## 4. Split main data set by years
+## 4. Find out which years have  full set of months of data 
 Att_Full_year <- AE_Att_monthp %>% mutate(Year = format(period, format = "%Y"))
 Att_Full_year
 
@@ -87,3 +87,42 @@ Records_year <-Att_Full_year %>%
                       count()
 Records_year
 
+# 1 2010      5
+# 2 2011     12
+# 3 2012     12
+# 4 2013     12
+# 5 2014     12
+# 6 2015     12
+# 7 2016     12
+# 8 2017     12
+# 9 2018     12
+# 10 2019      4
+
+
+# 5. Subset then just for complete years (2011,2012,2013,2014,2015,2016,2017,2018)
+
+Att_full_2011 <-  Att_Full_year %>% filter(Year == 2011) 
+Att_full_2011
+
+Att_full_2012 <-  Att_Full_year %>% filter(Year == 2012) 
+Att_full_2012
+
+Att_full_2013 <-  Att_Full_year %>% filter(Year == 2013) 
+Att_full_2013
+
+Att_full_2014 <-  Att_Full_year %>% filter(Year == 2014) 
+Att_full_2014
+
+Att_full_2015 <-  Att_Full_year %>% filter(Year == 2015) 
+Att_full_2015
+
+Att_full_2016 <-  Att_Full_year %>% filter(Year == 2016) 
+Att_full_2016
+
+Att_full_2017 <-  Att_Full_year %>% filter(Year == 2017) 
+Att_full_2017
+
+Att_full_2018 <-  Att_Full_year %>% filter(Year == 2018) 
+Att_full_2018
+
+# 6. CREATE FACET_WRAP plots by month for each year
