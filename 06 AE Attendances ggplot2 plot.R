@@ -274,3 +274,4 @@ ggsave("plots/07_A&E_Attendances_smooth_line.png", width = 6, height = 4)
 
 # 8.1 tailor that smooth line
 # Parameters we can use with the geom_smooth() function:
+# span = 0.3
