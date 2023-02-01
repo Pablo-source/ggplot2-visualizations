@@ -52,6 +52,8 @@ Some plots produced include themes, in the plots folder there is a collection of
 
 Example of a smooth line added to the AE Type I Attendances plot and tailored y axis labels
 
+Tailored geom smooth by using these parameters (se = TRUE,FALSE, display SE; span = 0.1 Use span to control the "wiggliness" of the default loess smoother)  geom_smooth(span = 0.1,se = TRUE, size = 0.8)
+
 ![08 AE Attendances custom geom_smooth](https://user-images.githubusercontent.com/76554081/215996970-5de470de-6e4c-4e17-b2dc-29bad4c06056.png)
 
 
