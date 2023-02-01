@@ -52,6 +52,7 @@ Some plots produced include themes, in the plots folder there is a collection of
 
 Example of a smooth line added to the AE Type I Attendances plot and tailored y axis labels
 
-![A E_Attendances_smooth_line](https://user-images.githubusercontent.com/76554081/215727115-299ff621-02f9-4e09-88d5-78c097ae0c1a.png)
+![08 AE Attendances custom geom_smooth](https://user-images.githubusercontent.com/76554081/215996970-5de470de-6e4c-4e17-b2dc-29bad4c06056.png)
+
 
 
