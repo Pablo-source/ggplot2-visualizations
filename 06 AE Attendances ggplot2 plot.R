@@ -327,6 +327,6 @@ TypeI_title_format   <- AEATT_plot %>%
   ) 
 
 TypeI_title_format
-ggsave("plots/10_AE_Attendances_format_title_subtitle.png", width = 6, height = 4)
+ggsave("plots/10_AE_Attendances_format_title_subtitle.png", width = 6, height = 4) 
 
 
