@@ -98,7 +98,6 @@ Records_year
 # 9 2018     12
 # 10 2019      4
 
-
 # 5. Subset then just for complete years (2011,2012,2013,2014,2015,2016,2017,2018)
 
 Att_full_2011 <-  Att_Full_year %>% filter(Year == 2011) 
