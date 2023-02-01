@@ -69,4 +69,7 @@ It is important to remember to turn your months variable into a Factor for the m
 
 Att_Full_year_f <-  Att_Full_year %>% mutate(Monthf = factor(Month, levels = month.abb))
 
-![11_AE_Attendances_facet_wrap](https://user-images.githubusercontent.com/76554081/216084514-b1ff7681-f155-48d3-8485-27cd430000aa.png)
+![12_AE_Attendances_facet_wrap](https://user-images.githubusercontent.com/76554081/216087465-3b571a69-d78c-482b-93bc-5a0c24f90f05.png)
+
+
+
