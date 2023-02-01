@@ -61,5 +61,12 @@ geom_smooth(span = 0.1,se = TRUE, size = 0.8)
 
 ![08 AE Attendances custom geom_smooth](https://user-images.githubusercontent.com/76554081/215996970-5de470de-6e4c-4e17-b2dc-29bad4c06056.png)
 
+### Showing set of plots split by variables using facet_wrap 
 
+This plot is just a small example on how to use facet_wrap to display specific plots by any categorical variable. In this instance I wanted to show AE Type I attendances in England by months and years.
 
+It is important to remember to turn your months variable into a Factor for the months label to be chronologically displayed in the plot.
+
+Att_Full_year_f <-  Att_Full_year %>% mutate(Monthf = factor(Month, levels = month.abb))
+
+![11_AE_Attendances_facet_wrap](https://user-images.githubusercontent.com/76554081/216084514-b1ff7681-f155-48d3-8485-27cd430000aa.png)
