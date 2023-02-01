@@ -184,7 +184,7 @@ theme(
     size =8, colour = "deepskyblue2", face = "bold")
 ) 
 
-AE_att_wrap_formatted
+AE_att_wrap_formatted 
 
 ggsave("plots/12_AE_Attendances_facet_wrap.png", width = 6, height = 4) 
 
