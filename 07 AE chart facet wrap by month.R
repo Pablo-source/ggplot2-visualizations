@@ -143,7 +143,6 @@ AE_att_wrap_year   <- Att_facet %>%
 AE_att_wrap_year   
 
 # Add title and subtitle to the above wrapped plot
-
 AE_att_wrap_year   <- Att_facet %>% 
   select(type_1_Major_att,Year,Monthf) %>% 
   ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
@@ -157,7 +156,7 @@ AE_att_wrap_year   <- Att_facet %>%
   theme_light() 
 AE_att_wrap_year  
 
-
+ggsave("plots/11_AE_Attendances_facet_wrap.png", width = 6, height = 4) 
 
 
 
