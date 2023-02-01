@@ -5,7 +5,6 @@
 library(tidyverse)
 library(gridExtra)
 
-
 # We can clean our workspace to keep just a set of variables
 rm(list=ls()[!(ls()%in%c('AE_data_plot'))])
 
@@ -77,11 +76,23 @@ select(
 AE_Att_monthp
 
 ## 4. Find out which years have  full set of months of data 
-Att_Full_year <- AE_Att_monthp %>% mutate(Year = format(period, format = "%Y"))
+# month.abb[month]
+
+# Extract Month and Year from period date variable 
+
+Att_Full_year <- AE_Att_monthp %>% 
+                        mutate(
+                                  Year = format(period, format = "%Y"),
+                                  Month = format(period, format = "%b")
+                                 )
 Att_Full_year
 
+# Turn month into a FACTOR to get the right month order in plots
+Att_Full_year_f <-  Att_Full_year %>% mutate(Monthf = factor(Month, levels = month.abb))
+
+
 # Check number of  rows per year
-Records_year <-Att_Full_year %>% 
+Records_year <-Att_Full_year_f %>% 
                       select(Year) %>% 
                       group_by(Year) %>% 
                       count()
@@ -100,28 +111,36 @@ Records_year
 
 # 5. Subset then just for complete years (2011,2012,2013,2014,2015,2016,2017,2018)
 
-Att_full_2011 <-  Att_Full_year %>% filter(Year == 2011) 
-Att_full_2011
+Subset <-c(2011,2012,2013,2014,2015,2016,2017,2018)
 
-Att_full_2012 <-  Att_Full_year %>% filter(Year == 2012) 
-Att_full_2012
+Att_full_years  <- Att_Full_year_f %>% filter(Year %in% Subset)
+Att_full_years
 
-Att_full_2013 <-  Att_Full_year %>% filter(Year == 2013) 
-Att_full_2013
+check <- Att_full_years %>% distinct(Year)
+check
 
-Att_full_2014 <-  Att_Full_year %>% filter(Year == 2014) 
-Att_full_2014
-
-Att_full_2015 <-  Att_Full_year %>% filter(Year == 2015) 
-Att_full_2015
-
-Att_full_2016 <-  Att_Full_year %>% filter(Year == 2016) 
-Att_full_2016
-
-Att_full_2017 <-  Att_Full_year %>% filter(Year == 2017) 
-Att_full_2017
-
-Att_full_2018 <-  Att_Full_year %>% filter(Year == 2018) 
-Att_full_2018
+head(Att_full_years)
 
 # 6. CREATE FACET_WRAP plots by month for each year
+# facet_wrap(~Monthl, labeller = label_wrap_gen(width = 20))
+
+# Subset variables for Facet_plot
+
+Att_facet <- Att_full_years %>% select(period,type_1_Major_att,Year,Monthf)
+Att_facet
+
+# Minimal facet_wrap to work with my data
+# Split facets by Year (group = year)
+# ggplot(aes (x = Month, y = type_1_Major_att, group = year))
+
+# # Turn month into a FACTOR to get the right month order in plots
+
+AE_att_wrap_year   <- Att_facet %>% 
+                      select(type_1_Major_att,Year,Monthf) %>% 
+                      ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
+                      geom_line(color="#0072CE", size=1,  linetype=1) +
+                      facet_wrap(~ Year)
+
+AE_att_wrap_year   
+
+# Add title and subtitle to the above wrapped plot
