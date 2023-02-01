@@ -68,8 +68,10 @@ This plot is just a small example on how to use facet_wrap to display specific p
 It is important to remember to turn your months variable into a Factor for the months label to be chronologically displayed in the plot.
 
 Att_Full_year_f <-  Att_Full_year %>% mutate(Monthf = factor(Month, levels = month.abb))
+  
+![13 Facet_wrap_attendances](https://user-images.githubusercontent.com/76554081/216088100-9966c033-61de-4bfe-8ba4-20dfbe18c32b.png)
 
-![12_AE_Attendances_facet_wrap](https://user-images.githubusercontent.com/76554081/216087465-3b571a69-d78c-482b-93bc-5a0c24f90f05.png)
+
 
 
 
