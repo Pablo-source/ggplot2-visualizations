@@ -1,4 +1,4 @@
-# 05 Tidy up downloaded AE data
+# 05 Tidy up downloaded AE data.R
 
 # 1. Load required packages 
 pacman::p_load(readxl,here,dplyr,janitor)
@@ -66,8 +66,6 @@ AE_data_Type1_ATT <- read_excel(here("data","AE_England_data.xls"),
 AE_data_Type1_ATT
 
 # 3. Subset original imported AE_data set to Keep A&E Attendances
-
-
 # From file  AE_England_data.xls
 AE_data_subset<- read_excel(
                       here("data", "AE_England_data.xls"), 

@@ -140,7 +140,26 @@ AE_att_wrap_year   <- Att_facet %>%
                       ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
                       geom_line(color="#0072CE", size=1,  linetype=1) +
                       facet_wrap(~ Year)
-
 AE_att_wrap_year   
 
 # Add title and subtitle to the above wrapped plot
+
+AE_att_wrap_year   <- Att_facet %>% 
+  select(type_1_Major_att,Year,Monthf) %>% 
+  ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
+  geom_line(color="#0072CE", size=1,  linetype=1) +
+  facet_wrap(~ Year) +
+  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
+       subtitle ="Type I attendances by month by year. 2011-2018",
+       # Change X and Y axis labels
+       x = "Period", 
+       y = "Type I Attendances") +
+  theme_light() 
+AE_att_wrap_year  
+
+
+
+
+
+
+
