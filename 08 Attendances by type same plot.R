@@ -59,22 +59,31 @@ AEBYEAR_long
 # 2.1 Display using facet_wrap AE Attendances by Metric one metric on each chart
 # facet_wrap() by Metric
 
+names(AEBYEAR_long)
+# [1] "period"  "Metrics" "value" 
+
 AEM_FACET_METRIC<- AEBYEAR_long %>%
 
-  select(type_1_Major_att,Year,Monthf) %>% 
-  ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
-  geom_line(color="#0072CE", size=1,  linetype=1) +
-  facet_wrap(~ Year) +
-  labs(title = "A&E Attendances in England: Type 1 Departments - Major A&E",
-       subtitle ="Type I attendances by month by year. 2011-2018",
+  select(period,Metrics,value) %>% 
+  ggplot(aes(x = period, y = value,group = Metrics, colour = Metrics)) +
+  geom_line(size=1,  linetype=1) +
+
+  labs(title = "A&E Attendances in England by Type",
+       subtitle ="Attendances by type by year 2011-2018",
        # Change X and Y axis labels
        x = "Period", 
        y = "Type I Attendances") +
-  theme_light() 
+  theme_light() +
+  facet_wrap(~ Metrics) +
+  # Apply format to sub-title
+theme(
+  plot.subtitle = element_text(
+    size =10, colour = "darkorange1", face = "bold")
+)
 
 AEM_FACET_METRIC  
 
-
+ggsave("plots/13_AE_Attendances_facet_wrap.png", width = 6, height = 4) 
 
 # 2.2 Display four AE Attendanves metrics on same chart using colour = Metric
 AEM_SINGLE_PLOT <- AEBYEAR_long %>% 
@@ -86,7 +95,13 @@ AEM_SINGLE_PLOT <- AEBYEAR_long %>%
        # Change X and Y axis labels
        x = "Period", 
        y = "Attendances") +
-  theme_light()  
+  theme_light()  +
+  
+  # Apply format to sub-title
+  theme(
+  plot.subtitle = element_text(
+    size =10, colour = "cornflowerblue", face = "bold")
+  )
 
 AEM_SINGLE_PLOT
 
