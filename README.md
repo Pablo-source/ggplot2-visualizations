@@ -90,7 +90,7 @@ Allowing us to plot a single line for each AE Attendances type (I,II,III and Tot
 
 ### AE Attendances by type by month and year including a smooth line
 
-We can also include a regression line for each of the individual facettted plots:
+We can also include a regression line for each of the individual facettted plots, as in "09 AE Attendances_by_year_geom_smooth.R", by using facet_wrap(~Year), group = Year and specially adding this new layer to the ggplot "geom_smooth(se = TRUE, colour = "darkorchid1" as shown below:
 
 ![18_AE_Attendances_facet_wrap_smooth](https://user-images.githubusercontent.com/76554081/216657329-3bf3f51b-0d51-4c08-b9a7-a1278891a726.png)
 
