@@ -83,7 +83,7 @@ This time we first re-shape our data to be in long format and then we use  facet
 ### AE Attendances by type on a single plot
 
 We can also re-shape our data in long format to use Metric as color ggplot(aes(x = period, y = value,group = Metrics, colour = Metrics)).
-This will allow us to plot on the same plot a single line for each AE Attendances type (I,II,III and Total) on the same figure
+Allowing us to plot a single line for each AE Attendances type (I,II,III and Total) on the same figure.
 
 ![14_AE_Attendances_by_type](https://user-images.githubusercontent.com/76554081/216571537-6f0cc2f2-8247-411c-bc52-ce4649dd072a.png)
 
