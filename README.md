@@ -88,4 +88,9 @@ Allowing us to plot a single line for each AE Attendances type (I,II,III and Tot
 ![14_AE_Attendances_by_type](https://user-images.githubusercontent.com/76554081/216571537-6f0cc2f2-8247-411c-bc52-ce4649dd072a.png)
 
 
+### AE Attendances by type by month and year including a smooth line
+
+We can also include a regression line for each of the individual facettted plots:
+
+![18_AE_Attendances_facet_wrap_smooth](https://user-images.githubusercontent.com/76554081/216657329-3bf3f51b-0d51-4c08-b9a7-a1278891a726.png)
 
