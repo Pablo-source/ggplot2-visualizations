@@ -94,3 +94,30 @@ We can also include a regression line for each of the individual facettted plots
 
 ![18_AE_Attendances_facet_wrap_smooth](https://user-images.githubusercontent.com/76554081/216657329-3bf3f51b-0d51-4c08-b9a7-a1278891a726.png)
 
+### AE Attendances by type combining density plot and scatterplot
+
+We can also combine two continuous measures like AE Type 1 Major AE And Type 2 single specialty into a scatterplot and add to this initial plot two density plots for each X and Y axis, describing the shape of the distribution for each of these metrics. See "11 Density plot Major Single AE Attendances.R" script for details.  
+
+Desity_plot02 <- Att_months %>% 
+  ggplot(aes(Major_att, Single_esp_att, Metrics, color = Month)) +
+  ggtitle("AE Major attendances (Type 2: Major A_E vs Single_specialty departments. 2011-2019") +
+  geom_point(size = 2, alpha = 0.3)   +
+  
+  # Adding density plot for X axis (AE Type_2 major_a_e)
+  geom_xsidedensity(
+    aes(y = after_stat(density),fill = Month),
+    alpha = 0.5, size = 1,
+    position = "stack") +
+
+ # Adding density plot for Y axis (AE Type_2 single_specialty)
+geom_ysidedensity(
+  aes(x = after_stat(density),fill = Month),
+  alpha = 0.5, size = 1,
+  position = "stack")  
+  
+Desity_plot02
+
+In the plot below is the result of this combination:
+
+![23 AE_major_attendances_A_E_single_Specialty](https://user-images.githubusercontent.com/76554081/217067693-539bbb28-b88e-45eb-ad69-aad187449c23.png)
+
