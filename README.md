@@ -103,13 +103,13 @@ Desity_plot02 <- Att_months %>%
   ggtitle("AE Major attendances (Type 2: Major A_E vs Single_specialty departments. 2011-2019") +
   geom_point(size = 2, alpha = 0.3)   +
   
-  # Adding density plot for X axis (AE Type_2 major_a_e)
+- Adding density plot for X axis (AE Type_2 major_a_e)
   geom_xsidedensity(
     aes(y = after_stat(density),fill = Month),
     alpha = 0.5, size = 1,
     position = "stack") +
 
- # Adding density plot for Y axis (AE Type_2 single_specialty)
+- Adding density plot for Y axis (AE Type_2 single_specialty)
 geom_ysidedensity(
   aes(x = after_stat(density),fill = Month),
   alpha = 0.5, size = 1,
