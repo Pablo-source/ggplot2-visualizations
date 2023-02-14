@@ -3,15 +3,8 @@ library(ggside)
 library(tidyverse)
 library(tidyquant)
 
-
 # Using the AEBYEAR_sel data set for this Density plot
-
 AEBYEAR_sel
-
-names(AEBYEAR_sel)
-names(Att_facet)
-
-head(Att_facet)
 
 # 1 DENSITY PLOT FOR MAJOR_ATTENDANCES AND SINGLE ESP ATT SCATTERPLOT
 AEBYEAR <- AEBYEAR_sel %>% select(period,Major_att,Single_esp_att,Other_att)

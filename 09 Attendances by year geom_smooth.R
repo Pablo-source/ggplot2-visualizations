@@ -2,6 +2,84 @@
 
 library(tidyverse)
 
+
+AE_data_Type1_ATT <- read_excel(here("data","AE_England_data.xls"),
+                                sheet = 1,skip =17, range = "C18:D123",na = "")
+AE_data_Type1_ATT
+
+# 3. Subset original imported AE_data set to Keep A&E Attendances
+# From file  AE_England_data.xls
+AE_data_subset<- read_excel(
+  here("data", "AE_England_data.xls"), 
+  sheet = 1, skip =17) %>% 
+  clean_names() %>% 
+  select(
+    "x1",                                                                      
+    "period",                                                                  
+    "type_1_departments_major_a_e",                                            
+    "type_2_departments_single_specialty",                                     
+    "type_3_departments_other_a_e_minor_injury_unit",                          
+    "total_attendances" 
+  )
+AE_data_subset
+
+# 4. Rename variables in preparation for creating a ggplot2 plot
+# 4.1 First we remove X1 extra variable
+AE_data_plot <- AE_data_subset %>% 
+  select(-x1)
+AE_data_plot
+
+AE_Attendances <- AE_data_plot
+
+AE_Att_year <- AE_Attendances %>% 
+  mutate(
+    Year = format(period, format = "%Y"),
+    Month = format(period, format = "%m"),
+    Monthl = months(as.Date(period))
+  )
+
+AE_Att_year
+
+AE_Att_monthp <- AE_Att_year %>% 
+  select(
+    period,
+    type_1_Major_att = type_1_departments_major_a_e,
+    type_2_Single_esp_att = type_2_departments_single_specialty,
+    type_3_other_att = type_3_departments_other_a_e_minor_injury_unit,
+    total_att = total_attendances,
+    Monthl
+  ) 
+
+AE_Att_monthp
+
+Att_Full_year <- AE_Att_monthp %>% 
+  mutate(
+    Year = format(period, format = "%Y"),
+    Month = format(period, format = "%b")
+  )
+Att_Full_year
+
+# Turn month into a FACTOR to get the right month order in plots
+Att_Full_year_f <-  Att_Full_year %>% mutate(Monthf = factor(Month, levels = month.abb))
+
+
+# Check number of  rows per year
+Records_year <-Att_Full_year_f %>% 
+  select(Year) %>% 
+  group_by(Year) %>% 
+  count()
+Records_year
+
+# Subset variables for Facet_plot
+Subset <-c(2011,2012,2013,2014,2015,2016,2017,2018)
+
+Att_full_years  <- Att_Full_year_f %>% filter(Year %in% Subset)
+Att_full_years
+
+Att_facet <- Att_full_years %>% select(period,type_1_Major_att,Year,Monthf)
+Att_facet
+
+
 AE_att_wrap_formatted   <- Att_facet %>% 
   select(type_1_Major_att,Year,Monthf) %>% 
   ggplot(aes(x = Monthf, y = type_1_Major_att,group = Year)) +
