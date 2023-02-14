@@ -2,7 +2,7 @@
 
 library(tidyverse)
 
-
+# Load England AE Attendances
 AE_data_Type1_ATT <- read_excel(here("data","AE_England_data.xls"),
                                 sheet = 1,skip =17, range = "C18:D123",na = "")
 AE_data_Type1_ATT
@@ -78,6 +78,35 @@ Att_full_years
 
 Att_facet <- Att_full_years %>% select(period,type_1_Major_att,Year,Monthf)
 Att_facet
+
+
+## Create new data set [AEBYEAR_sel] for further charts
+# From this data set: Att_Full_year_f
+
+# Output: AEBYEAR_sel
+# Input: Att_Full_year_f
+
+names(Att_Full_year_f)
+AEBYEAR_sel <- Att_Full_year_f %>% 
+               select(
+                 period, 
+                  Major_att = type_1_Major_att,
+                  Single_esp_att = type_2_Single_esp_att,
+                 Other_att  = type_3_other_att, 
+                 total_att, 
+                 Monthf,
+                 Year)
+AEBYEAR_sel
+
+# > MAJORSING
+# A tibble: 96 × 4
+#period              Major_att Single_esp_att Other_att
+#<dttm>                  <dbl>          <dbl>     <dbl>
+#  1 2011-01-01 00:00:00  1133881.         51585.   542331.
+#2 2011-02-01 00:00:00  1053707.         51249.   494408.
+#3 2011-03-01 00:00:00  1225222.         57900.   580319.
+#4 2011-04-01 00:00:00  1197213.         54042.   593120.
+
 
 
 AE_att_wrap_formatted   <- Att_facet %>% 
