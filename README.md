@@ -121,3 +121,14 @@ In the plot below is the result of this combination:
 
 ![23 AE_major_attendances_A_E_single_Specialty](https://user-images.githubusercontent.com/76554081/217067693-539bbb28-b88e-45eb-ad69-aad187449c23.png)
 
+### AE Attendances by year using a Raincloud chart
+
+A Raincloud chart allows us to combine different visualizations to explore metrics distributions shape using ggdist package
+In this particular example, I plot number of Major A&E Attendances by year for 2010-2013 period, using the following three density plot functios from ggdis package:
+stat_halfeye(), stat_dots() and geom_boxplot(). 
+
+Using this ggdis plackage, many other functions allow to select the best geom to visualize frequency distributions in our plots. See script "12 Raincloud chart AE Attendances.R" in this project for further details about this Raincloud chart below:
+
+![24_AE_Attendances_Raincloud_chart](https://user-images.githubusercontent.com/76554081/219657470-8f9e3baf-a818-41a4-bc04-29bd88370147.png)
+
+
