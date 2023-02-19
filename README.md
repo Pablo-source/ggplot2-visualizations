@@ -132,3 +132,13 @@ Using this ggdis plackage, many other functions allow to select the best geom to
 ![24_AE_Attendances_Raincloud_chart](https://user-images.githubusercontent.com/76554081/219657470-8f9e3baf-a818-41a4-bc04-29bd88370147.png)
 
 
+## Appendix
+
+There is a useful showtext package that allows us to use different google fonts on our chats. This is useful when producing a more elaborated charts in R linke maps, where we want to obtain a specific aesthetic effect using fonts. See:  https://fonts.google.com/. Some examples of this can bee seen in "A Fonts and icons "A Using Google fonts in plots.R" scripts.
+
+![03 Histogram bell family Barlow condensed google font](https://user-images.githubusercontent.com/76554081/219947428-803ddd33-c745-4cb0-bff9-e7ef1feacce5.png)
+
+![04 Histogram bell google font didactic gothic](https://user-images.githubusercontent.com/76554081/219947433-40f2e618-d89e-4e7f-89bc-f1814280f3c9.png)
+
+
+
