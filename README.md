@@ -134,7 +134,7 @@ Using this ggdis plackage, many other functions allow to select the best geom to
 
 ## Appendix
 
-There is a useful showtext package that allows us to use different google fonts on our chats. This is useful when producing a more elaborated charts in R linke maps, where we want to obtain a specific aesthetic effect using fonts. See:  https://fonts.google.com/. Some examples of this can bee seen in "A Fonts and icons "A Using Google fonts in plots.R" scripts.
+There is the showtext package that allows us to use different google fonts on our chats. It can be useful when producing a more elaborated charts in R linke maps, where we want to obtain a specific aesthetic effect using fonts. See:  https://fonts.google.com/. Some examples of this can bee seen in "A Fonts and icons "A Using Google fonts in plots.R" scripts.
 
 ![03 Histogram bell family Barlow condensed google font](https://user-images.githubusercontent.com/76554081/219947428-803ddd33-c745-4cb0-bff9-e7ef1feacce5.png)
 
