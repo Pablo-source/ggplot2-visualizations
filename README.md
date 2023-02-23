@@ -134,6 +134,16 @@ Using this ggdis plackage, many other functions allow to select the best geom to
 
 ## Appendix
 
+## Create an animated GIF from a ggplot2 chart
+
+There is an example on this project on how to use camcoder to create a GIF from a ggplot chart. Useful to explore the design process of any chart in R
+
+![AE_Attendances_England](https://user-images.githubusercontent.com/76554081/220868334-87326e42-3bd1-4584-9ceb-07ebed26cbab.gif)
+
+This can be included in any presentation, when it might be useful to teach of to design ggplots in R. See details in this folder on this repo: https://github.com/Pablo-source/ggplot2-visualizations/tree/main/camcoder
+
+## Using google fonts
+
 There is the showtext package that allows us to use different google fonts on our chats. It can be useful when producing a more elaborated charts in R linke maps, where we want to obtain a specific aesthetic effect using fonts. See:  https://fonts.google.com/. Some examples of this can bee seen in "A Using Google fonts in plots.R" scripts.
 
 ![03 Histogram bell family Barlow condensed google font](https://user-images.githubusercontent.com/76554081/219947428-803ddd33-c745-4cb0-bff9-e7ef1feacce5.png)
