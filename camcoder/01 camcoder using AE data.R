@@ -189,6 +189,13 @@ ggplot(AE_ATTM, aes(x = Period, y = Major_att)) +
 # 3 Record the plot
 # This is how you setup camcoder output file on your work laptop
 
+## Extra tip: When working in the NHS modern desktop laptops, after installing R and R Studio, I recomment to create a "WorkingDir" folder
+# whithin your R folder. This will help you to render any Markdown document (specially with nested side navigation menus as part of your YAML section)
+
+# So After this setup to render my Markdown documents, I always use that WorkingDir to create new ouptut folders.
+# In this instance I am creating a folder called "recording102" for this specific GIF
+# Create a new folder every time to record a new GIF using camcoder, to keep each recordin neat and tidy
+
 gg_record(
   dir = file.path("C:\\R\\WorkingDir", "recording102"), # where to save the recording
   device = "png", # device to use to save images
