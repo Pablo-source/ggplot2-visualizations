@@ -80,7 +80,7 @@ Att_facet <- Att_full_years %>% select(period,type_1_Major_att,Year,Monthf)
 Att_facet
 
 
-## Create new data set [AEBYEAR_sel] for further charts
+## Create new data set [AEBYEAR_sel] for further charts 
 # From this data set: Att_Full_year_f
 
 # Output: AEBYEAR_sel
