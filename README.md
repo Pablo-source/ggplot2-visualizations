@@ -131,6 +131,18 @@ Using this ggdis plackage, many other functions allow to select the best geom to
 
 ![24_AE_Attendances_Raincloud_chart](https://user-images.githubusercontent.com/76554081/219657470-8f9e3baf-a818-41a4-bc04-29bd88370147.png)
 
+### OECD Iflation CPI using a Spaghetti plot
+
+An standard area plot can be quickly transformed into a Spaghetti plot
+
+![01 Consumer price index 1974-2022](https://user-images.githubusercontent.com/76554081/221425760-879d6d16-2a7a-4e4f-843c-6417a20216e7.png)
+
+This is an exmaple on how to create a Spaghetti plot to highlight a serie within a set of several time series indicators
+
+![02 Spaghetti chart inflation selected countries](https://user-images.githubusercontent.com/76554081/221425688-d23b1197-732b-42cc-92d1-45bd889dd498.png)
+
+See script "13 Spaghetti plot OECD CPI 1974_2022.R" in this project for further details
+
 
 ## Appendix
 
