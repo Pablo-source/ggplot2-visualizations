@@ -143,6 +143,14 @@ This is an exmaple on how to create a Spaghetti plot to highlight a serie within
 
 See script "13 Spaghetti plot OECD CPI 1974_2022.R" in this project for further details
 
+### OECD Iflation CPI using a Sparkline plot
+
+Furthermore, we can use this charts to identify Min, Max and latest values in any TS, using facets to split plots in this instance by county.
+See script *14 Sprkline OECD CPI.R" in this project for specific details on this sparkline charts
+
+![05 Sparkline OECD CPI sel countries](https://user-images.githubusercontent.com/76554081/221958954-7448a992-403c-43c4-9b02-2853b6438518.png)
+
+
 
 ## Appendix
 
