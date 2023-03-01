@@ -152,11 +152,11 @@ The building blocks of this chart is made of an adhoc set of calculations to be 
 
 - Set of calculated values to be displayed in the line as dot geoms using ggplot2
 
-minv <- group_by(OECD_subset, country) %>% slice(which.min(value))
+minv <- group_by(OECD_subset, country) %>% slice(which.min(value))  (red dot)
 
-maxv <- group_by(OECD_subset, country) %>% slice(which.max(value))
+maxv <- group_by(OECD_subset, country) %>% slice(which.max(value))  (blue dot)
 
-endv <- group_by(OECD_subset, country) %>% filter(time == max(time))
+endv <- group_by(OECD_subset, country) %>% filter(time == max(time)) (purple dot)
 
 ![05 Sparkline OECD CPI sel countries](https://user-images.githubusercontent.com/76554081/221958954-7448a992-403c-43c4-9b02-2853b6438518.png)
 
