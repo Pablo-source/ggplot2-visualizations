@@ -143,6 +143,13 @@ This is an exmaple on how to create a Spaghetti plot to highlight a serie within
 
 See script "13 Spaghetti plot OECD CPI 1974_2022.R" in this project for further details
 
+Also we can include latest value for each country, highlighted as a purple dot, See script "13 01 Spaghetti plot OECD CPI 1974_2022.R" for details
+
+![03 Spaguetti plot latest value purple](https://user-images.githubusercontent.com/76554081/222247710-87e5ced9-54b7-4fcf-bd0b-7eca70b761f6.png)
+
+
+
+
 ### OECD Inflation CPI metric using a Sparkline plot
 
 Furthermore, we can use this charts to identify Min, Max and latest values in any TS, using facets to split plots in this instance by county.
