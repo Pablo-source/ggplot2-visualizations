@@ -146,11 +146,19 @@ See script "13 Spaghetti plot OECD CPI 1974_2022.R" in this project for further 
 ### OECD Inflation CPI metric using a Sparkline plot
 
 Furthermore, we can use this charts to identify Min, Max and latest values in any TS, using facets to split plots in this instance by county.
-See script *14 Sprkline OECD CPI.R" in this project for specific details on this sparkline charts
+See script **14 Sprkline OECD CPI.R*" in this project for specific details on this sparkline charts
+
+The building blocks of this chart is made of an adhoc set of calculations to be displayed as dots in the main line chart. They will be visual references, and it can be extended to compute the five number summary (Min, Q1, Q2 (median), Q3, Max) or any other adhoc statistics like any central tendency measure
+
+- Set of calculated values to be displayed in the line as dot geoms using ggplot2
+
+minv <- group_by(OECD_subset, country) %>% slice(which.min(value))
+
+maxv <- group_by(OECD_subset, country) %>% slice(which.max(value))
+
+endv <- group_by(OECD_subset, country) %>% filter(time == max(time))
 
 ![05 Sparkline OECD CPI sel countries](https://user-images.githubusercontent.com/76554081/221958954-7448a992-403c-43c4-9b02-2853b6438518.png)
-
-
 
 ## Appendix
 
