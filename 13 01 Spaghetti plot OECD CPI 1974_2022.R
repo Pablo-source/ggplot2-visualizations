@@ -118,7 +118,7 @@ OECD_subset
 
 endv <- group_by(OECD_subset, country) %>% filter(time == max(time))
 
-# Plot width latest value and country name next to it
+# Plot including latest value and country name next to it
 
 tmp_plt <- OECD_subset %>%
   select(location = country,time,value) %>% 
