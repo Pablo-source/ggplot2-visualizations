@@ -9,6 +9,11 @@
 # OECD_Inflation_CPI.csv
 
 # 1. Load required packages
+
+# 1.1 Check Packman is already installed 
+if (!require("pacman")) install.packages("pacman")
+
+# 1.2 Load required packages
 pacman::p_load(readxl,here,dplyr,janitor)
 
 OECD_files <- list.files(path = "./data/OECD", pattern = "csv$")
