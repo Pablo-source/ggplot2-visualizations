@@ -1,5 +1,5 @@
 # 01 BoEInterest rate data wrangling
-# R Script: 01 BoE Interest rates.R
+# R Script: 15 BoE Interest rates.R
 # Excel file: "baserate_29APR2023.xls"
 library(readxl)
 library(here)
