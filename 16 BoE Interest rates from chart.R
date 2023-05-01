@@ -104,7 +104,7 @@ Rates_chart
 Rates_chart <- boerates_y %>% 
   select(Date,bank_rate,Year) %>% 
   ggplot(aes(x = Date, y = bank_rate, group = Year )) +
-  geom_line(color="#3cd7d9",size =2, linetype = 1) + 
+  geom_line(color="#3cd7d9",size =1, linetype = 1) + 
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme_bw() +
   # Add specific background colour extracted from chart
@@ -116,8 +116,8 @@ Rates_chart <- boerates_y %>%
   labs(title = "Bank of England Official Bank Rate",
        subtitle ="From 1st May 2018 to 27th April 2023",
        # Change X and Y axis labels
-       x = "Bank Rate", 
-       y = "Period") +
+       x = "Period", 
+       y = "Bank Rate") +
   
   # Add reference lines
   # First lockdown: On 23 March 2020
