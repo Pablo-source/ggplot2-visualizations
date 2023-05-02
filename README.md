@@ -196,7 +196,7 @@ This is an example on how to use annotations and reference lines to a ggplot2 ch
 
 ## Using arrows to point to specific features in charts
 
-We can use geom_curve() function to draw specific arrows pointing to data points we want to highlight in our chart. The plot below build from "17 Annotations mtcars data set.R" script in this project.
+We can use geom_curve() function to draw specific arrows pointing to data points we want to highlight in our chart. The plot below build from "17 Annotations mtcars data set.R" script in this project. Also, I have used geom_text_repel() function to avoid labels overlapping in the plot. 
 
 ![02 Car efficiency](https://user-images.githubusercontent.com/76554081/235616257-803f886d-8438-42ba-8a51-aba882de6cec.png)
 
