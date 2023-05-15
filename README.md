@@ -229,7 +229,8 @@ On top of these design principles, I have improved the previous **BoE Interest r
 
  See script "18 Tufte style charts in R.R" for details on the above changes applied to this chart: 
   
-  ![18 Tufte style charts](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/78fdfcf0-5902-4e93-bbba-0044dccbbeae)
+![02 BoE Interest rates May2023](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/bb3d07e3-a0f7-4e7d-95b0-4df4fb3dac67)
+
 
   The final ggplot2 chart output can be found here on this ggplot2 visualizations project: plots/25 Tufte style chart.png
 
