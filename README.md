@@ -223,7 +223,7 @@ On top of these design principles, I have improved the previous **BoE Interest r
 
 2. Added custom Title to x and Y axis using labs() function
 - labs(title = "BoE Interest rates reach 4.5% in May 2023",
-- subtitle ="Eleventh interest rate increase since Jan 2022",
+- subtitle ="Twelfth interest rate increase since Jan 2022",
 - y = "Interest rate %",
 - x = "Year")
 
