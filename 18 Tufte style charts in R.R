@@ -1,4 +1,4 @@
-# R Script: 16 BoE Interest rates from chart.R  
+# R Script: 16 BoE Interest rates from chart.R   
 # Date: 01/05/2023
 # Excel file: "BoE-Database_export.xlsx"
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse)
@@ -144,7 +144,7 @@ geom_vline(xintercept = as.numeric(as.Date("2021-01-04")),color="#adaade",linety
 Rates_chart_01
 
 # Save output plot 
-ggsave("01 Bank of England Bank Rates and covid lockdowns.png", width = 10, height = 6) 
+ggsave("01 Bank of England Bank Rates and covid lockdowns May2023.png", width = 10, height = 6) 
 
 # Create NEW CHART IMPROVING VISUALS 
 
@@ -176,7 +176,7 @@ endv <- boerates_yn_max %>% filter(Date == max(Date))
 
 # Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 # ℹ Please use `linewidth` instead.
-# Ensure we have now bank rate defined as NUMERIC !!!
+# Ensure we have now bank rate defined as NUMERIC !!! 
 str(boerates_yn)
 
 Rates_chart_02 <- boerates_yn %>% 
@@ -196,7 +196,9 @@ Rates_chart_02 <- boerates_yn %>%
     panel.grid.major.y = element_line(colour = "black")
         )    +
   labs(title = "BoE Interest rates reach 4.5% in May 2023",
-       subtitle ="Eleventh interest rate increase since Jan 2022",
+       subtitle ="Twelfth interest rate increase since Dec 2021",
        y = "Interest rate %",
        x = "Year")
 Rates_chart_02
+
+ggsave("02 BoE Interest rates May2023.png", width = 10, height = 6) 
