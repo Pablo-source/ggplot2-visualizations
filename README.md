@@ -200,7 +200,36 @@ We can use geom_curve() function to draw specific arrows pointing to data points
 
 ![02 Car efficiency](https://user-images.githubusercontent.com/76554081/235616257-803f886d-8438-42ba-8a51-aba882de6cec.png)
 
+## Improve charts quality using Tufte design principles
+  
+The chart below is an example on how to apply Tufte design priniples to improve graph readibility. He claimed that a good graphical representations maximize data-ink and erase as much non-data-ink as possible. This is a good design practise when creating ggplot2 charts in R. One key concept he developed was the data-ink ratio which is calculated by 1 minus the proportion of the graph that can be erased without loss of data-information.
 
+The five design principles he created can be an excelent guide to create better charts in R: 
+ - Above all else show data.
+- Maximize the data-ink ratio.
+- Erase non-data-ink.
+- Erase redundant data-ink.
+- Revise and edit
 
+On top of these design principles, I have improved the previous **BoE Interest rates chart** design by apoplying these set of changes: 
+1. Adding several paramters to the theme() function: 
+- Remove default chart area grey color background, make it white instead
+      panel.background = element_rect(fill = NA), 
+- Remove X axis grid lines, x axis lines provide sufficient guideline to identify (bank interest rate) value 
+       panel.grid.major.x = element_blank(),
+       panel.grid.minor.x = element_blank(), 
+- Keep just major Y axis grid lines, use black colour to match axis and title font colour
+        panel.grid.major.y = element_line(colour = "black")
 
+2. Added custom Title to x and Y axis using labs() function
+- labs(title = "BoE Interest rates reach 4.5% in May 2023",
+-     subtitle ="Eleventh interest rate increase since Jan 2022",
+-     y = "Interest rate %",
+-     x = "Year")
+
+ See script "18 Tufte style charts in R.R" for details on the above changes applied to this chart: 
+  
+  ![18 Tufte style charts](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/78fdfcf0-5902-4e93-bbba-0044dccbbeae)
+
+  
 
