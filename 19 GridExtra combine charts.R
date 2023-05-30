@@ -23,8 +23,8 @@ ONS_Inflation_files
 # Re-create Figure 01
 # Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls
 
-
-# Step 02 List tabs from above Excel file to know which tab to import
+ 
+# Step 02 List tabs from above Excel file to know which tab to import 
 excel_sheets("./data/Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls")
 [1] "data"
 
