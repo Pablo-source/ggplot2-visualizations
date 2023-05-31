@@ -7,6 +7,7 @@ pacman::p_load(readxl,here,dplyr,janitor,tidyverse)
 library(gridExtra)
 
 # 1. Import data from ONS website
+
 # https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest
 
 # Data we will use to two draw two plots: 
@@ -26,8 +27,9 @@ ONS_Inflation_files
  
 # Step 02 List tabs from above Excel file to know which tab to import 
 excel_sheets("./data/Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls")
-[1] "data"
+# [1] "data"
 
+# Import data using read_excel() using use clean_names() from Janitor to tidy variable names
 Inflation_rates <- read_excel(here("data", "Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls"), sheet = 1,
                               skip = 6,
                               col_types = c("text", "numeric", "numeric", "numeric")) %>% 
@@ -57,3 +59,68 @@ Inflation_formatted
 Inflation_date_format <- Inflation_formatted %>% 
                         select(date = datef, cpih, cpi, ooh)
 Inflation_date_format
+
+# 2. Subset initial data for each indicator
+
+# SOURCE ONS:
+
+
+# Definitions
+https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017
+
+# The Consumer Prices Index including owner occupiers' housing costs (CPIH) 
+# include a measure of the costs associated with owning, maintaining and living in one's own home, known as owner occupiers' housing costs (OOH), along with Council Tax
+# Both of these are significant expenses for many households that are excluded from the CPI
+# (CPI) The Consumer Price Index
+# (CPIH) The Consumer Price Index Including owner occupier's housing costs
+# (OOH) owner occupiers' housing costs
+
+
+CPIH_data <- Inflation_date_format %>% select(date,cpih)
+CPI_data <- Inflation_date_format %>% select(date,cpi)
+OOH_data <- Inflation_date_format %>% select(date,ooh)
+
+
+# Load required libraries
+library(ggplot2)
+library(gridExtra)
+
+
+# 3. BUILD PLOTS
+
+# 3.1 CPI plot
+CPI_data <- CPI_data %>% mutate(Year = as.numeric(format(date,'%Y')))
+CPI_data
+
+# (CPI) The Consumer Price Index
+CPI_yn_max <- CPI_data %>%  select(date,cpi,Year)
+endv <- CPI_yn_max %>% filter(date == max(date))
+
+
+CPI_chart <- CPI_data %>% 
+  ggplot(aes(x = date, y = cpi, group = Year )) +
+  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) + 
+  # End value geom_point
+  geom_point(data = endv, col = 'blue') +
+  # End value label (date and value)
+  geom_text(data = endv, aes(label = date), hjust =2.5,vjust = -1) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 0.7, nudge_x = 5,vjust = -1)) +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme(
+    panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "black")
+  )    +
+  labs(title = "CPI reach 8.7% in April 2023",
+       subtitle ="The Consumer Price Index (CPI)",
+       y = "Value %",
+       x = "Year")
+CPI_chart
+
+# 3.2 CPIH plot
+# Provide label to latest data point 
+
+
+# 3.3 OOH plot
+# Provide label to latest data point 
