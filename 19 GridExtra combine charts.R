@@ -66,7 +66,7 @@ Inflation_date_format
 
 
 # Definitions
-https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017
+# https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017
 
 # The Consumer Prices Index including owner occupiers' housing costs (CPIH) 
 # include a measure of the costs associated with owning, maintaining and living in one's own home, known as owner occupiers' housing costs (OOH), along with Council Tax
