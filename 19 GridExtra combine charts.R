@@ -119,7 +119,7 @@ CPI_data <- CPI_data %>% mutate(Year = as.numeric(format(date,'%Y')))
 CPI_data
 
 
-# (CPI) The Consumer Price Index  
+# (CPI) The Consumer Price Index    
 CPI_yn_max <- CPI_data %>%  select(date,cpi,Year)
 endv <- CPI_yn_max %>% filter(date == max(date))
 
@@ -130,8 +130,8 @@ CPI_chart <- CPI_data %>%
   # End value geom_point
   geom_point(data = endv, col = 'blue') +
   # End value label (date and value)
-  geom_text(data = endv, aes(label = date), hjust =2.6,vjust = 1.5) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 0.7, nudge_x = 5,vjust = 1.5)) +
+  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 2.9) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 0.7,vjust = 1.5)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -140,7 +140,7 @@ CPI_chart <- CPI_data %>%
     panel.grid.major.y = element_line(colour = "black")
   )    +
   labs(title = "CPI reach 8.7% in April 2023",
-       subtitle ="The Consumer Price Index (CPI)",
+       subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
        y = "Value %",
        x = "Year")
 CPI_chart
@@ -150,7 +150,54 @@ ggsave("plots/29_CPI_formatted_April_2023.png", width = 6, height = 4)
 
 # 3.2 CPIH plot
 # Provide label to latest data point 
+# Included several theme options 
+CPIH_yn_max <- CPIH_data %>%  select(date,cpih,Year)
+endv <- CPIH_yn_max %>% filter(date == max(date))
+
+CPIH_chart_formatted <- CPIH_data %>% 
+  ggplot(aes(x = date, y = cpih)) + 
+  geom_line(color="#F08080",linewidth =1, linetype = 1) + theme_light()  +
+  geom_point(data = endv, col = 'blue') +
+  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 4.5) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpih), hjust = 0.7,vjust = 3.2)) +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme(
+    panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "black")
+  )   +
+  labs(title = "CPIH reach 7.8% in April 2023",
+       subtitle ="(CPIH) The Consumer Price Index Including owner occupier's housing costs.source: ONS",
+       y = "Value %",
+       x = "Year")
+
+CPIH_chart_formatted
+ggsave("plots/30_CPIH_formatted_April_2023.png", width = 6, height = 4) 
 
 
 # 3.3 OOH plot
-# Provide label to latest data point 
+# Provide label to latest data point
+OOH_yn_max <- OOH_data %>%  select(date,ooh,Year)
+endv <- OOH_yn_max %>% filter(date == max(date))
+
+OOH_chart_formatted <- OOH_data %>% 
+  ggplot(aes(x = date, y = ooh)) + 
+  geom_line(color="#008000",linewidth =1, linetype = 1) + theme_light()  +
+  geom_point(data = endv, col = 'blue') +
+  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 4.5) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",ooh), hjust = 0.7,vjust = 3.2)) +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme(
+    panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "black")
+  )   +
+  labs(title = "OOH reach 4.0% in April 2023",
+       subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
+       y = "Value %",
+       x = "Year")
+
+OOH_chart_formatted
+ggsave("plots/31_OOH_formatted_April_2023.png", width = 6, height = 4) 
