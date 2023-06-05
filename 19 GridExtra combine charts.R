@@ -3,8 +3,10 @@
 # Example on how to use GridExtra using Inflation data 
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse)
 
-# Load inflation data from ONS website
+# Load required libraries 
+library(ggplot2)
 library(gridExtra)
+library(lubridate)
 
 # 1. Import data from ONS website
 
@@ -80,9 +82,7 @@ CPIH_data <- Inflation_date_format %>% select(date,cpih)
 OOH_data <- Inflation_date_format %>% select(date,ooh)
 
 
-# Load required libraries
-library(ggplot2)
-library(gridExtra)
+
 
 # 3. BUILD PLOTS
 # 3.1 Create year variable for each series
@@ -203,12 +203,53 @@ OOH_chart
 ggsave("plots/31_OOH_formatted_April_2023.png", width = 6, height = 4) 
 
 ## 4. COMBINE PLOTS USING GRIDEXTRA
-#
-library(gridExtra)
-
 # CPI_chart
 # CPIH_chart
 # OOH_chart
 
 grid.arrange(CPI_chart, CPIH_chart, OOH_chart, ncol=3)
 ggsave("plots/32_Inflation_grid_April_2023.png", width = 6, height = 4) 
+
+
+# Combining four charts into a single image
+boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% clean_names()
+boerates_num <- boerates %>% mutate(bank_rate_n = as.numeric(bank_rate))
+boerates_y <- boerates_num  %>%  mutate(Date = as.Date(date,"%d%b%Y"),Year = as.numeric(format(Date,'%Y'))) 
+# Subset required variables for charts (Date,bank_rate_n,Year)
+boerates_yn <- boerates_y %>% select(Date,bank_rate_n,Year)
+
+# 5. Provide label to latest data point  
+boerates_yn_max <- boerates_yn %>%  select(Date,bank_rate_n,Year)
+endv <- boerates_yn_max %>% filter(Date == max(Date))
+
+# Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+# ℹ Please use `linewidth` instead.
+# Ensure we have now bank rate defined as NUMERIC !!! 
+str(boerates_yn)
+
+BoErates <- boerates_yn %>% 
+  select(Date,bank_rate_n,Year) %>% 
+  ggplot(aes(x = Date, y = bank_rate_n, group = Year )) +
+  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) + 
+  # End value geom_point
+  geom_point(data = endv, col = 'blue') +
+  # End value label (date and value)
+  geom_text(data = endv, aes(label = Date), hjust =1.9, nudge_x = 5,vjust = 1.0) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",bank_rate_n), hjust = 1.5, nudge_x = 5,vjust = -1)) +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme(
+    panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "black")
+  )    +
+  labs(title = "BoE Interest rates reach 4.5% in May 2023",
+       subtitle ="Twelfth interest rate increase since Dec 2021",
+       y = "Interest rate %",
+       x = "Year")
+BoErates
+
+# We can combine the three inflation rate measures plus BoE intertest rate plot into a single image
+grid.arrange(CPI_chart, CPIH_chart, OOH_chart,BoErates, ncol=2)
+ggsave("plots/34_Inflation_interest_rates.png", width = 6, height = 4) 
+
