@@ -126,12 +126,12 @@ endv <- CPI_yn_max %>% filter(date == max(date))
 
 CPI_chart <- CPI_data %>%  
   ggplot(aes(x = date, y = cpi)) +
-  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) + 
+  geom_line(color="#3cd7d9",linewidth =1, linetype = 1) + 
   # End value geom_point
   geom_point(data = endv, col = 'blue') +
   # End value label (date and value)
-  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 2.9) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 0.7,vjust = 1.5)) +
+  geom_text(data = endv, aes(label = date), hjust =2.0,vjust = 2.9) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 1.5,vjust = 1.5)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -154,12 +154,12 @@ ggsave("plots/29_CPI_formatted_April_2023.png", width = 6, height = 4)
 CPIH_yn_max <- CPIH_data %>%  select(date,cpih,Year)
 endv <- CPIH_yn_max %>% filter(date == max(date))
 
-CPIH_chart_formatted <- CPIH_data %>% 
+CPIH_chart <- CPIH_data %>% 
   ggplot(aes(x = date, y = cpih)) + 
   geom_line(color="#F08080",linewidth =1, linetype = 1) + theme_light()  +
   geom_point(data = endv, col = 'blue') +
-  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 4.5) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpih), hjust = 0.7,vjust = 3.2)) +
+  geom_text(data = endv, aes(label = date), hjust =2.3,vjust = 4.5) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpih), hjust = 1.7,vjust = 3.2)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -172,7 +172,7 @@ CPIH_chart_formatted <- CPIH_data %>%
        y = "Value %",
        x = "Year")
 
-CPIH_chart_formatted
+CPIH_chart
 ggsave("plots/30_CPIH_formatted_April_2023.png", width = 6, height = 4) 
 
 
@@ -181,12 +181,12 @@ ggsave("plots/30_CPIH_formatted_April_2023.png", width = 6, height = 4)
 OOH_yn_max <- OOH_data %>%  select(date,ooh,Year)
 endv <- OOH_yn_max %>% filter(date == max(date))
 
-OOH_chart_formatted <- OOH_data %>% 
+OOH_chart <- OOH_data %>% 
   ggplot(aes(x = date, y = ooh)) + 
   geom_line(color="#008000",linewidth =1, linetype = 1) + theme_light()  +
   geom_point(data = endv, col = 'blue') +
-  geom_text(data = endv, aes(label = date), hjust =0.4,vjust = 4.5) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",ooh), hjust = 0.7,vjust = 3.2)) +
+  geom_text(data = endv, aes(label = date), hjust =1.9,vjust = 2.70) +
+  geom_text(data = endv, aes(label = paste0("Most recent value: ",ooh), hjust = 1.55,vjust = 1.5)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -199,5 +199,16 @@ OOH_chart_formatted <- OOH_data %>%
        y = "Value %",
        x = "Year")
 
-OOH_chart_formatted
+OOH_chart
 ggsave("plots/31_OOH_formatted_April_2023.png", width = 6, height = 4) 
+
+## 4. COMBINE PLOTS USING GRIDEXTRA
+#
+library(gridExtra)
+
+# CPI_chart
+# CPIH_chart
+# OOH_chart
+
+grid.arrange(CPI_chart, CPIH_chart, OOH_chart, ncol=3)
+ggsave("plots/32_Inflation_grid_April_2023.png", width = 6, height = 4) 
