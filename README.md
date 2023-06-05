@@ -234,3 +234,12 @@ On top of these design principles, I have improved the previous **BoE Interest r
 
   The final ggplot2 chart output can be found here on this ggplot2 visualizations project: plots/25 Tufte style chart.png
 
+## Arrange several plots on a page
+
+Using gridExtra package we can arrange several charts in one image, choosing the layout of the charts in rows and cols. In this instance I combine the three inflation measures into a single image made of three charts arranged in three columns and one row. See script "19 GridExtra combine charts.R", for details on how to use grid.arrange() function see: https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html
+  
+  ![33 Grid_Extra_inflation_charts](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/59b4dcb7-667c-4607-89f2-0a343519a600)
+
+  
+  
+  
