@@ -1,5 +1,6 @@
-# R Script: 20 House prices ONS.R
-# Date: 09/06/2023
+# R Script: 20 House prices annotations ONS.R
+
+# Date: 13/06/2023
 # Excel file: "Figure_2__The_average_UK_house_price_was_£285,000_in_March_2023.xls"
 library(readxl)
 library(here)
