@@ -134,18 +134,24 @@ endv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(datef =
 minv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(house_price == min(house_price))
 maxv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(house_price == max(house_price))
 
+format(value, scientific=FALSE);
+
+House_prices_chart <- House_prices_chart %>%  
+                       mutate(house_pricef = format(house_price, scientific=FALSE))
+House_prices_chart
 
 Housep_chart <- House_prices_chart %>% 
   select(datef,house_price,Year) %>% 
   ggplot(aes(x = datef, y = house_price)) +
   geom_line(color="#B94A81",size =2, linetype = 1) + 
-  scale_y_continuous(breaks = seq(0, 300000, by = 8000)) +
+  scale_y_continuous(breaks = seq(0, 300000, by = 20000)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 300000)) +
   theme_bw() +
   
   labs(title = "ONS Average UK House prices",     # Include titles and subtitles and also X and Y Axis titles
        subtitle ="From January 2005 to March 2023",
        # Change X and Y axis labels
-       x = "Average House price", y = "Period") +
+       x = "Period", y = "Average House price") +
   # End value label (date and value)
      geom_text(data = endv, aes(label = datef), hjust =2.8, vjust = 1.5) +
      geom_text(data = endv, aes(label = paste0("Most recent value: ",house_price), hjust = 0.7, vjust = 1.5)) +
