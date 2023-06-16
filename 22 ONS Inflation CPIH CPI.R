@@ -1,5 +1,12 @@
 ## 22 ONS Inflation CPIH CPI.R script
 # Load required packages
+if(!require("pacman")) install.packages("pacman")
+if(!require("here")) install.packages("here")
+if(!require("janitor")) install.packages("janitor")
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("gridExtra")) install.packages("gridExtra")
+if(!require("lubridate")) install.packages("lubridate")
+
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse,ggplot2,gridExtra,lubridate)
 
 # Sep 01 List files in 02 ONS_Inflation folder
