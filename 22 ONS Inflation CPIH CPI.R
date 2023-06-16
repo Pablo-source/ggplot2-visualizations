@@ -1,9 +1,5 @@
-## 01 01 ONS Inflation CPIH CPI
-
-
-# 19 GridExtra 
-
-# Example on how to use GridExtra using Inflation data 
+## 22 ONS Inflation CPIH CPI.R script
+# Load required packages
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse,ggplot2,gridExtra,lubridate)
 
 # Sep 01 List files in 02 ONS_Inflation folder
