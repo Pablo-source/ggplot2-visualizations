@@ -245,6 +245,9 @@ into a single image made of three charts arranged in three columns and one row. 
   
   ![35_Inflation_and_interest_rates](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/fe804f41-3b4c-4715-9f1f-6053c6ee7aa5)
 
+## Build maps using ggplo2
 
-  
+This is an elegant way to create customizable maps combining {ggplot2} and {sf} packages. Performing a left join between an indicator “Percent of new cases of cancer” and a NHS CCG  shapefile for England, we can display a continuous variable in a choropleth map. See script “23 CCG OIS Indicators maps facet_wrap.R” for further details. 
+  ![08_facet_wrap_ggplot2_maps_year_cases_of_cancer](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/9211a259-2e31-4888-9b7d-9c3cc122f330)
+
   
