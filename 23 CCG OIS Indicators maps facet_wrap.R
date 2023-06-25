@@ -110,18 +110,22 @@ mapdata_1314 <- left_join(CCG_boundaries_MAP, cancer1314, by = "CCG21CD")
 mapdata_coord_1314 <- st_transform(mapdata_1314, "+init=epsg:4326")
 
 # 7. Create MAPS using facet_wrap
-# New map containing New cases of cancer for 2013 and 2014 years combined
-# facet_wrap()
-head(mapdata_coord_1314)
-names(mapdata_coord_1314)
-cancer_map<- mapdata_coord_1314 %>% 
+# Map displaying New cases of cancer for 2013 and 2014.
+# facet_wrap(~date) to display two maps on the same graphical output file
+
+cancer_map<- mapdata_coord_1314 %>%  
   ggplot(color=qsec)+ 
   aes(fill = indicator_value) +
   geom_sf() +
   facet_wrap(~date)+
     labs(title = "Percent of new cases of cancer 2013-2014",
        subtitle = "Valid stage recorded at diagnosis,(95% CI)",
-       caption = "Data source: NHS Digital (NDRS). CCG OIS Indicator 1.17")
+       caption = "Data source: NHS Digital (NDRS). CCG OIS Indicator 1.17") +
+  theme(legend.title=element_blank(),
+        axis.text.x = element_blank(),
+              axis.text.y = element_blank(),
+              axis.ticks = element_blank(),
+              rect = element_blank())
 cancer_map
 
 ggsave("plots/08_facet_wrap_ggplot2_maps_year_cases_of_cancer.png", width = 6, height = 4)
