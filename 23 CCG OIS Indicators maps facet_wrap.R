@@ -115,7 +115,7 @@ mapdata_coord <- st_transform(mapdata_1319, "+init=epsg:4326")
 # 7. Create MAPS using facet_wrap
 # Map displaying New cases of cancer for 2013 and 2014.
 # facet_wrap(~date) to display two maps on the same graphical output file
-rm(list=ls()[! ls() %in% c("mapdata_coord","cancer_map")])
+
 
 cancer_map<- mapdata_coord %>%  
   ggplot(color=qsec)+ 
@@ -132,6 +132,6 @@ cancer_map<- mapdata_coord %>%
               rect = element_blank()) 
 cancer_map
 
-
+rm(list=ls()[! ls() %in% c("mapdata_coord","cancer_map")])
 
 ggsave("plots/08_facet_wrap_ggplot2_maps_year_cases_of_cancer.png", width = 6, height = 4)
