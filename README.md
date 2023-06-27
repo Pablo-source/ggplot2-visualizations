@@ -247,7 +247,7 @@ into a single image made of three charts arranged in three columns and one row. 
 
 ## Build maps using ggplo2
 
-This is an elegant way to create customizable maps combining {ggplot2} and {sf} packages. Performing a left join between an indicator “Percent of new cases of cancer” and a NHS CCG  shapefile for England, we can display a continuous variable in a choropleth map. 
+This is an elegant way to create customizable maps combining {ggplot2} and {sf} packages. Performing a left join between an indicator “Percent of new cases of cancer” and a NHS CCG England shapefile. We can display a continuous variable in a choropleth map, in this example cancer cases for 2013 and 2019 years by CCGs in England. 
 
 Click on the image below, when it would open on a new tab, it will show the true final map colour palette. 
 
