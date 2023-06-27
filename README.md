@@ -249,7 +249,7 @@ into a single image made of three charts arranged in three columns and one row. 
 
 This is an elegant way to create customizable maps combining {ggplot2} and {sf} packages. Performing a left join between an indicator “Percent of new cases of cancer” and a NHS CCG England shapefile. We can display a continuous variable in a choropleth map, in this example cancer cases for 2013 and 2019 years by CCGs in England. 
 
-Click on the image below, it will open on a new tab, it displaying the true final map colour palette. 
+Click on the image below, a map will be displayed in a new tab, with its true final map colour palette. 
 
 See script “23 CCG OIS Indicators maps facet_wrap.R” for further details. 
 
