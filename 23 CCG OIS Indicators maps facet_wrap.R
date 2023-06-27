@@ -78,54 +78,60 @@ cancer_data_sel
 
 # 5.1 obtain number of records by year
 cancer_data_ren <- cancer_data_sel %>% select(date = reporting_period , breakdown, ons_code, 
-                                    level, level_description,indicator_value )
+                                     level, level_description,indicator_value )
 cancer_data_ren
+
 dist_years <- cancer_data_ren %>% select(date) %>% group_by(date) %>% count()
 dist_years
 
-# 2013 and 2014 data 
-cancer_2013_14 <- cancer_data_ren %>% filter(date =="2013"|date =="2014")
-cancer_2013_14
+# 2013 and 2019 data 
+cancer_20131419 <- cancer_data_ren %>% filter(date =="2013"|date =="2019")
+cancer_20131419
 
 # 6. PLOT Maps using facet_wrap 
 # Remove previous data sets from environment
 # Just keep CCG_boundaries and indicator data sets for each year (2013,2019)
-# we only need the data_evolution dataset
-rm(list=ls()[! ls() %in% c("CCG_boundaries","cancer_2013_14")])
+
 
 # 6.1 Load shapefile for all set of maps
 CCG_boundaries_MAP <- CCG_boundaries
 
 # 6.2 Draw cancer indicator map for each year 
 # 6.2.1 Prepare data for plots (save it in a workspace)
-cancer1314 <- cancer_2013_14 %>% select( date,breakdown, CCG21CD = ons_code,level,level_description,indicator_value)
-cancer1314
+cancer131419 <- cancer_20131419 %>% select( date,breakdown, CCG21CD = ons_code,level,level_description,indicator_value)
+cancer131419
 
-# We merge both shape file and metric data set using DPLYR
-mapdata_1314 <- left_join(CCG_boundaries_MAP, cancer1314, by = "CCG21CD") 
+# we only need the data_evolution dataset
+rm(list=ls()[! ls() %in% c("CCG_boundaries_MAP","cancer131419")])
+
+# We merge both shape file and metric data set using DPLYR 
+mapdata_1319 <- left_join(CCG_boundaries_MAP, cancer131419, by = "CCG21CD") 
 
 # 6.2.1 APPLY SPECIFIC PROJECTION TO MERGED DATA SET
 # Apply specific projection (epsg:4326) to the map
 # and indicator merged data set 
-mapdata_coord_1314 <- st_transform(mapdata_1314, "+init=epsg:4326")
+mapdata_coord <- st_transform(mapdata_1319, "+init=epsg:4326")
 
 # 7. Create MAPS using facet_wrap
 # Map displaying New cases of cancer for 2013 and 2014.
 # facet_wrap(~date) to display two maps on the same graphical output file
+rm(list=ls()[! ls() %in% c("mapdata_coord","cancer_map")])
 
-cancer_map<- mapdata_coord_1314 %>%  
+cancer_map<- mapdata_coord %>%  
   ggplot(color=qsec)+ 
   aes(fill = indicator_value) +
   geom_sf() +
   facet_wrap(~date)+
-    labs(title = "Percent of new cases of cancer 2013-2014",
+    labs(title = "Percent of new cases of cancer 2013 and 2019",
        subtitle = "Valid stage recorded at diagnosis,(95% CI)",
        caption = "Data source: NHS Digital (NDRS). CCG OIS Indicator 1.17") +
   theme(legend.title=element_blank(),
         axis.text.x = element_blank(),
               axis.text.y = element_blank(),
               axis.ticks = element_blank(),
-              rect = element_blank())
+              rect = element_blank()) 
 cancer_map
+
+
 
 ggsave("plots/08_facet_wrap_ggplot2_maps_year_cases_of_cancer.png", width = 6, height = 4)
