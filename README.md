@@ -244,9 +244,10 @@ into a single image made of three charts arranged in three columns and one row. 
 
  Combining measures from different data sources (Inflation (ONS) and Interest rates (BoE) in a single chart: 
 
-![33_Inflation_interest_rates](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/15e9579d-f872-4d17-8f41-4ff4a3c6e1cb)
+![Uploading 35_Inflation_and_interest_rates.png…]()
 
-  
+  ![Uploading 33 Grid_Extra_inflation_charts.png…]()
+
 
 ## Build maps using ggplo2
 
