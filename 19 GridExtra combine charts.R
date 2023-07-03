@@ -81,9 +81,6 @@ CPI_data <- Inflation_date_format %>% select(date,cpi)
 CPIH_data <- Inflation_date_format %>% select(date,cpih)
 OOH_data <- Inflation_date_format %>% select(date,ooh)
 
-
-
-
 # 3. BUILD PLOTS
 # 3.1 Create year variable for each series
 CPI_data <- CPI_data %>% mutate(Year = as.numeric(format(date,'%Y')))
