@@ -1,4 +1,4 @@
-# 19 GridExtra 
+# 24 GridExtra charts inflation bank rate.R 
 
 # Example on how to use GridExtra using Inflation data 
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse)
@@ -140,7 +140,7 @@ CPI_chart <- CPI_data %>%
     panel.grid.major.y = element_line(colour = "black")
   )    +
   labs(title = "CPI reach 8.7% in May 2023",
-       subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
+       subtitle ="The Consumer Price Index (CPI).Source:ONS",
        y = "Value %",
        x = "Year")
 CPI_chart
@@ -168,7 +168,7 @@ CPIH_chart <- CPIH_data %>%
     panel.grid.major.y = element_line(colour = "black")
   )   +
   labs(title = "CPIH reach 7.9% in May 2023",
-       subtitle ="(CPIH) The Consumer Price Index Including owner occupier's housing costs.source: ONS",
+       subtitle ="(CPIH) Consumer Price Index Including owner occupier's housing costs.Source:ONS",
        y = "Value %",
        x = "Year")
 
@@ -195,7 +195,7 @@ OOH_chart <- OOH_data %>%
     panel.grid.major.y = element_line(colour = "black")
   )   +
   labs(title = "OOH reach 4.2% in May 2023",
-       subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
+       subtitle ="(OOH) Owner occupiers' housing costs.Source:ONS",
        y = "Value %",
        x = "Year")
 
@@ -203,16 +203,17 @@ OOH_chart
 ggsave("plots/31_OOH_formatted_May_2023.png", width = 6, height = 4) 
 
 ## 4. COMBINE PLOTS USING GRIDEXTRA
-# CPI_chart
-# CPIH_chart
-# OOH_chart
-
+# 4.1 CPI_chart
+# 4.2 CPIH_chart
+# 4.3 OOH_chart
+# 4.4 BoE base Interest rate
+# Latest data June 2023
 grid.arrange(CPI_chart, CPIH_chart, OOH_chart, ncol=3)
 ggsave("plots/32_Inflation_grid_May_2023.png", width = 6, height = 4) 
 
-
 # Combining four charts into a single image
 boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% clean_names()
+
 boerates_num <- boerates %>% mutate(bank_rate_n = as.numeric(bank_rate))
 boerates_y <- boerates_num  %>%  mutate(Date = as.Date(date,"%d%b%Y"),Year = as.numeric(format(Date,'%Y'))) 
 # Subset required variables for charts (Date,bank_rate_n,Year)
@@ -243,13 +244,13 @@ BoErates <- boerates_yn %>%
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_line(colour = "black")
   )    +
-  labs(title = "BoE Interest rates reach 4.5% in May 2023",
-       subtitle ="Twelfth interest rate increase since Dec 2021",
+  labs(title = "BoE Interest rates reach 5% in June 2023",
+       subtitle ="Thirteenth interest rate increase since Dec 2021",
        y = "Interest rate %",
        x = "Year")
 BoErates
 
 # We can combine the three inflation rate measures plus BoE intertest rate plot into a single image
 grid.arrange(CPI_chart, CPIH_chart, OOH_chart,BoErates, ncol=2)
-ggsave("plots/34_Inflation_interest_rates.png", width = 6, height = 4) 
+ggsave("plots/33_Inflation_interest_rates.png", width = 6, height = 4) 
 
