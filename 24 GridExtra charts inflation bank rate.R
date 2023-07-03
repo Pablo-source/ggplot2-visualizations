@@ -14,7 +14,7 @@ library(lubridate)
 
 # Data we will use to two draw two plots: 
 
-# Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls
+# Figure_1__Annual_CPIH_and_CPI_inflation_rates_little_changed_between_April_and_May_2023.xls
 # Figure_6__Housing_and_household_services_made_the_largest_upward_contribution_to_the_change_in_the_annual_CPIH_inflation_rate.xls
 # Figure_8__The_annual_inflation_rate_eased_in_the_European_Union,_Germany_and_the_United_States_in_April_2023.xls
 
@@ -23,16 +23,15 @@ library(lubridate)
 ONS_Inflation_files <-list.files (path = "./data" ,pattern = "xls$")
 ONS_Inflation_files
 
-# Re-create Figure 01
-# Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls
-
+# Re-create Figure 01 with latest data release May 2013 data
+# Figure_1__Annual_CPIH_and_CPI_inflation_rates_little_changed_between_April_and_May_2023.xls
  
 # Step 02 List tabs from above Excel file to know which tab to import 
-excel_sheets("./data/Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls")
+excel_sheets("./data/Figure_1__Annual_CPIH_and_CPI_inflation_rates_little_changed_between_April_and_May_2023.xls")
 # [1] "data"
 
 # Import data using read_excel() using use clean_names() from Janitor to tidy variable names
-Inflation_rates <- read_excel(here("data", "Figure_1__Annual_CPIH_and_CPI_inflation_rates_continue_to_ease_in_April_2023.xls"), sheet = 1,
+Inflation_rates <- read_excel(here("data", "Figure_1__Annual_CPIH_and_CPI_inflation_rates_little_changed_between_April_and_May_2023.xls"), sheet = 1,
                               skip = 6,
                               col_types = c("text", "numeric", "numeric", "numeric")) %>% 
                    clean_names()
@@ -56,8 +55,7 @@ Inflation_formatted <- Inflation_rates %>%
                       mutate(datef = as.Date(date, format = "%Y/%b/%d"))
 Inflation_formatted
 
-# Re-arrange variaboles
-
+# Re-arrange variables
 Inflation_date_format <- Inflation_formatted %>% 
                         select(date = datef, cpih, cpi, ooh)
 Inflation_date_format
@@ -65,7 +63,6 @@ Inflation_date_format
 # 2. Subset initial data for each indicator
 
 # SOURCE ONS:
-
 
 # Definitions
 # https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017
@@ -97,17 +94,23 @@ CPI_chart <- CPI_data %>% ggplot(aes(x = date, y = cpi)) + geom_line(color="#3cd
   labs(title = "(CPI) The Consumer Price Index. April 2023", subtitle ="Source: ONS,consumer price indicesa brief guide")
 CPI_chart
 
+tail(CPI_data)
+
 ggsave("plots/26_CPI_EDA_chart.png", width = 6, height = 4) 
 
 CPIH_chart <- CPIH_data %>% ggplot(aes(x = date, y = cpih)) + geom_line(color="#F08080",linewidth =1, linetype = 1) + theme_light()  +
   labs(title = "(CPIH) The Consumer Price Index Including owner occupier's housing costs. April 2023", subtitle ="Source: ONS,consumer price indicesa brief guide")
 CPIH_chart
 
+tail(CPIH_data)
+
 ggsave("plots/27_CPIH_EDA_chart.png", width = 6, height = 4) 
 
 OOH_chart <- OOH_data %>% ggplot(aes(x = date, y = ooh)) + geom_line(color="#008000",linewidth =1, linetype = 1) + theme_light()  +
   labs(title = "(OOH) owner occupiers' housing costs. April 2023", subtitle ="Source: ONS,consumer price indicesa brief guide")
 OOH_chart
+
+tail(OOH_data)
 
 ggsave("plots/28_OOH_EDA_chart.png", width = 6, height = 4) 
 
@@ -128,7 +131,7 @@ CPI_chart <- CPI_data %>%
   geom_point(data = endv, col = 'blue') +
   # End value label (date and value)
   geom_text(data = endv, aes(label = date), hjust =2.0,vjust = 2.9) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpi), hjust = 1.5,vjust = 1.5)) +
+  geom_text(data = endv, aes(label = paste0("CPI value: ",cpi), hjust = 1.5,vjust = 1.5)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -136,13 +139,13 @@ CPI_chart <- CPI_data %>%
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_line(colour = "black")
   )    +
-  labs(title = "CPI reach 8.7% in April 2023",
+  labs(title = "CPI reach 8.7% in May 2023",
        subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
        y = "Value %",
        x = "Year")
 CPI_chart
 
-ggsave("plots/29_CPI_formatted_April_2023.png", width = 6, height = 4) 
+ggsave("plots/29_CPI_formatted_May_2023.png", width = 6, height = 4) 
 
 
 # 3.2 CPIH plot
@@ -156,7 +159,7 @@ CPIH_chart <- CPIH_data %>%
   geom_line(color="#F08080",linewidth =1, linetype = 1) + theme_light()  +
   geom_point(data = endv, col = 'blue') +
   geom_text(data = endv, aes(label = date), hjust =2.3,vjust = 4.5) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",cpih), hjust = 1.7,vjust = 3.2)) +
+  geom_text(data = endv, aes(label = paste0("CPIH value: ",cpih), hjust = 1.7,vjust = 3.2)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -164,13 +167,13 @@ CPIH_chart <- CPIH_data %>%
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_line(colour = "black")
   )   +
-  labs(title = "CPIH reach 7.8% in April 2023",
+  labs(title = "CPIH reach 7.9% in May 2023",
        subtitle ="(CPIH) The Consumer Price Index Including owner occupier's housing costs.source: ONS",
        y = "Value %",
        x = "Year")
 
 CPIH_chart
-ggsave("plots/30_CPIH_formatted_April_2023.png", width = 6, height = 4) 
+ggsave("plots/30_CPIH_formatted_May_2023.png", width = 6, height = 4) 
 
 
 # 3.3 OOH plot
@@ -183,7 +186,7 @@ OOH_chart <- OOH_data %>%
   geom_line(color="#008000",linewidth =1, linetype = 1) + theme_light()  +
   geom_point(data = endv, col = 'blue') +
   geom_text(data = endv, aes(label = date), hjust =1.9,vjust = 2.70) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",ooh), hjust = 1.55,vjust = 1.5)) +
+  geom_text(data = endv, aes(label = paste0("OOH value: ",ooh), hjust = 1.55,vjust = 1.5)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
@@ -191,13 +194,13 @@ OOH_chart <- OOH_data %>%
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_line(colour = "black")
   )   +
-  labs(title = "OOH reach 4.0% in April 2023",
+  labs(title = "OOH reach 4.2% in May 2023",
        subtitle ="The Consumer Price Index (CPI).source: ONS,consumer price indices a brief guide",
        y = "Value %",
        x = "Year")
 
 OOH_chart
-ggsave("plots/31_OOH_formatted_April_2023.png", width = 6, height = 4) 
+ggsave("plots/31_OOH_formatted_May_2023.png", width = 6, height = 4) 
 
 ## 4. COMBINE PLOTS USING GRIDEXTRA
 # CPI_chart
@@ -205,7 +208,7 @@ ggsave("plots/31_OOH_formatted_April_2023.png", width = 6, height = 4)
 # OOH_chart
 
 grid.arrange(CPI_chart, CPIH_chart, OOH_chart, ncol=3)
-ggsave("plots/32_Inflation_grid_April_2023.png", width = 6, height = 4) 
+ggsave("plots/32_Inflation_grid_May_2023.png", width = 6, height = 4) 
 
 
 # Combining four charts into a single image
@@ -227,12 +230,12 @@ str(boerates_yn)
 BoErates <- boerates_yn %>% 
   select(Date,bank_rate_n,Year) %>% 
   ggplot(aes(x = Date, y = bank_rate_n, group = Year )) +
-  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) + 
+  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) +  
   # End value geom_point
   geom_point(data = endv, col = 'blue') +
   # End value label (date and value)
   geom_text(data = endv, aes(label = Date), hjust =1.9, nudge_x = 5,vjust = 1.0) +
-  geom_text(data = endv, aes(label = paste0("Most recent value: ",bank_rate_n), hjust = 1.5, nudge_x = 5,vjust = -1)) +
+  geom_text(data = endv, aes(label = paste0("Interest rate value: ",bank_rate_n), hjust = 1.5, nudge_x = 5,vjust = -1)) +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
