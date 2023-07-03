@@ -209,7 +209,7 @@ ggsave("plots/31_OOH_formatted_May_2023.png", width = 6, height = 4)
 # 4.4 BoE base Interest rate
 # Latest data June 2023
 grid.arrange(CPI_chart, CPIH_chart, OOH_chart, ncol=3)
-ggsave("plots/32_Inflation_grid_May_2023.png", width = 6, height = 4) 
+ggsave("plots/32_Inflation_grid_May_2023.png", width = 6, height = 4)  
 
 # Combining four charts into a single image
 boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% clean_names()
@@ -237,7 +237,7 @@ BoErates <- boerates_yn %>%
   # End value label (date and value)
   geom_text(data = endv, aes(label = Date), hjust =1.9, nudge_x = 5,vjust = 1.0) +
   geom_text(data = endv, aes(label = paste0("Interest rate value: ",bank_rate_n), hjust = 1.5, nudge_x = 5,vjust = -1)) +
-  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  scale_x_date(date_labels="%Y",date_breaks  ="2 year") +
   theme(
     panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
     panel.grid.major.x = element_blank(),
