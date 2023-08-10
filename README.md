@@ -205,7 +205,7 @@ We can use geom_curve() function to draw specific arrows pointing to data points
 The chart below is an example on how to apply Tufte design priniples to improve graph readibility. He claimed that a good graphical representations maximize data-ink and erase as much non-data-ink as possible. This is a good design practise when creating ggplot2 charts in R. One key concept he developed was the data-ink ratio which is calculated by 1 minus the proportion of the graph that can be erased without loss of data-information.
 
 The five design principles he created can be an excelent guide to create better charts in R: 
- - Above all else show data.
+- Above all else show data.
 - Maximize the data-ink ratio.
 - Erase non-data-ink.
 - Erase redundant data-ink.
