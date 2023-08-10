@@ -227,12 +227,12 @@ On top of these design principles, I have improved the previous **BoE Interest r
 - y = "Interest rate %",
 - x = "Year")
 
- See script "18 Tufte style charts in R.R" for details on the above changes applied to this chart: 
+See script "18 Tufte style charts in R.R" for details on the above changes applied to this chart: 
   
-![02 BoE Interest rates June2023](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/964fd036-211c-4b47-ab0a-e2168a59c26b)
+![02_BoE_Interest_rate_Aug2023](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/304be700-962d-4a92-a624-ad242309f923)
 
 
-  The final ggplot2 chart output can be found here on this ggplot2 visualizations project: plots/25 Tufte style chart.png
+The final ggplot2 chart output can be found here on this ggplot2 visualizations project: plots/25 Tufte style chart.png
 
 ## Arrange several plots on a page
 
