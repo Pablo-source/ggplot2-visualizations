@@ -192,7 +192,7 @@ There is the showtext package that allows us to use different google fonts on ou
 
 This is an example on how to use annotations and reference lines to a ggplot2 charts. In this example I plot Bank of England Official Bank Rates against the three lockdowns that we had in the UK during COVID19 pandemic. For details on the scrips used to produce this chart please see "16 BoE Interest rates from chart.R" script. 
 
-![01 Bank of England Bank Rates and covid lockdowns](https://user-images.githubusercontent.com/76554081/235512513-efc676e4-b828-4529-968a-bb50228b0261.png)
+![01 Bank of England Bank Rates and covid lockdowns](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/ef3ad14d-c9df-4bd8-bb22-f74b25d7c656)
 
 ## Using arrows to point to specific features in charts
 
