@@ -228,8 +228,9 @@ On top of these design principles, I have improved the previous **BoE Interest r
 - x = "Year")
 
 See script "18 Tufte style charts in R.R" for details on the above changes applied to this chart: 
-  
-![02_A E_Attendances_Type_1_England_line_point_geom](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/eee54a42-db5f-470e-ade4-93675744fbaf)
+
+![02_BoE_Interest_rate_Aug2023](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/f620da02-683a-4857-a8a7-f91b6fff79b6)
+
 
 The final ggplot2 chart output can be found here on this ggplot2 visualizations project: plots/25 Tufte style chart.png
 
