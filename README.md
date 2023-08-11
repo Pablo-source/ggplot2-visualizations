@@ -148,8 +148,6 @@ Also we can include latest value for each country, highlighted as a purple dot, 
 ![03 Spaguetti plot latest value purple](https://user-images.githubusercontent.com/76554081/222247710-87e5ced9-54b7-4fcf-bd0b-7eca70b761f6.png)
 
 
-
-
 ### OECD Inflation CPI metric using a Sparkline plot
 
 Furthermore, we can use this charts to identify Min, Max and latest values in any TS, using facets to split plots in this instance by county.
@@ -186,7 +184,6 @@ There is the showtext package that allows us to use different google fonts on ou
 
 ![03 Histogram bell family Barlow condensed google font](https://user-images.githubusercontent.com/76554081/219947428-803ddd33-c745-4cb0-bff9-e7ef1feacce5.png)
 
-![04 Histogram bell google font didactic gothic](https://user-images.githubusercontent.com/76554081/219947433-40f2e618-d89e-4e7f-89bc-f1814280f3c9.png)
 
 ## Annotations in ggplot2 plots
 
