@@ -88,7 +88,7 @@ Housep_chart <- House_prices_chart %>%
   labs(title = "ONS Average UK House prices",     # Include titles and subtitles and also X and Y Axis titles
        subtitle ="From January 2005 to May 2023",
        # Change X and Y axis labels
-       x = "Average House price", y = "Period") +
+       x = "Period" , y = "Average House price" ) +
   # End value label (date and value)
   geom_text(data = endv, aes(label = datef), hjust =2.8, vjust = 2.5) +
   geom_text(data = endv, aes(label = paste0("Latest value: ",house_price), hjust = 0.95, vjust = 2.4)) +
@@ -102,5 +102,4 @@ Housep_chart <- House_prices_chart %>%
 Housep_chart
 
 
-ggsave("plots/03_ONS_Average_UK_House_prices_Jan2005_May2023_Annotated.png", width = 10, height = 6) 
-
+ggsave("plots/35_ONS_Average_UK_House_prices_Jan2005_May2023_Annotated.png", width = 10, height = 6) 
