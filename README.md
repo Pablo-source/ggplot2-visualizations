@@ -254,3 +254,9 @@ See script “23 CCG OIS Indicators maps facet_wrap.R” for further details.
 
   ![08_facet_wrap_ggplot2_maps_year_cases_of_cancer](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/71166192-c4a6-4345-9e59-8a5548cff109)
 
+## Exclude legends using subttiles
+
+Trying to improve the feel and look of charts using Tufte's design principles, I found the example on Tweeter (x) below with a clever use of HTML tags to implement colours in a plot sub title. 
+See script "25 Exclude legelnds using sbutitles.R" on this ggplot2 visualizations projecgt for script details.
+
+![04 Final formatted scatterplot](https://github.com/Pablo-source/ggplot2-visualizations/assets/76554081/0b5111e2-4e84-461a-97a5-7cdd404d5ab9)
