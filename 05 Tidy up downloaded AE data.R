@@ -1,6 +1,7 @@
 # 05 Tidy up downloaded AE data.R
 
 # 1. Load required packages 
+if (!require("pacman")) install.packages("pacman")
 pacman::p_load(readxl,here,dplyr,janitor)
 
 # Check existing files in data project folder
