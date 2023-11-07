@@ -184,6 +184,7 @@ There is the showtext package that allows us to use different google fonts on ou
 
 ![03 Histogram bell family Barlow condensed google font](https://user-images.githubusercontent.com/76554081/219947428-803ddd33-c745-4cb0-bff9-e7ef1feacce5.png)
 
+See this script for details on how to use Gootle fonts <https://github.com/Pablo-source/ggplot2-visualizations/blob/main/A%20Using%20Google%20fonts%20in%20plots.R>
 
 ## Annotations in ggplot2 plots
 
