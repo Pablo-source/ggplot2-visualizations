@@ -24,27 +24,19 @@ excel_sheets("./data/BoE-Database_export.xlsx")
 
 # Step 01 Load Excel file with BoE interest rates
 # This data mimics the charts on their website, the plot starts on 2008-05-01
-boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% 
-  clean_names()
-boerates
 
-# IMPORTANT< we must change bank_rate to be numeric !!!
-boerates_num <- boerates %>% 
-                mutate(bank_rate_n = as.numeric(bank_rate))
-
-# Step 04 Read in data from Row 7 onwards
-# Transform (date as <dttm> into Date as <date>format)
 library(lubridate)
 
-boerates_y <- boerates_num  %>% 
-              mutate(Date = as.Date(date,"%d%b%Y"),
-                     Year = as.numeric(format(Date,'%Y'))) 
-boerates_y
-head(boerates_y)
-tail(boerates_y)
+
+boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% 
+            clean_names() %>% 
+            mutate(bank_rate_n = as.numeric(bank_rate)) %>%
+# Step 04 Read in data from Row 7 onwards
+           mutate(Date = as.Date(date,"%d%b%Y"),
+           Year = as.numeric(format(Date,'%Y'))) 
 
 # Subset required variables for charts (Date,bank_rate_n,Year)
-boerates_yn <- boerates_y %>% select(Date,bank_rate_n,Year)
+boerates_yn <- boerates %>% select(Date,bank_rate_n,Year)
 
 # Section 02: Create plot
 # Setup initial chart to start applying some theme
@@ -91,7 +83,7 @@ Rates_chart
 # Second lockdown: A second national lockdown began on 5 November 2020 in response to rising cases in the UK
 # Third Lockdown: On Monday 4 January 2021 at 8pm, the Prime Minister announced the third national lockdown
 
-Rates_chart_01 <- boerates_y %>% 
+Rates_chart_01 <- boerates %>% 
   select(Date,bank_rate,Year) %>% 
   ggplot(aes(x = Date, y = bank_rate, group = Year )) +
   geom_line(color="#3cd7d9",size =1, linetype = 1) + 
@@ -128,7 +120,7 @@ Rates_chart_01
 ggsave("plots/01 Bank of England Bank Rates and covid lockdowns.png", width = 10, height = 6) 
 
 # Create NEW CHART IMPROVING VISUALS 
-Rates_data<- boerates_y %>% select(Date,bank_rate,Year) 
+Rates_data<- boerates %>% select(Date,bank_rate,Year) 
 Rates_data
 
 str(Rates_data)
@@ -151,14 +143,13 @@ str(Rates_data)
 #     x = "Year")
 
 # 5. Provide label to latest data point 
-boerates_num <- Rates_data %>% mutate(bank_rate_n = as.numeric(bank_rate))
-boerates_y <- boerates_num  %>%  mutate(date = as.Date(Date,"%d%b%Y"),Year = as.numeric(format(Date,'%Y'))) 
-# Subset required variables for charts (Date,bank_rate_n,Year)
-boerates_yn <- boerates_y %>% select(Date,bank_rate_n,Year)
-boerates_yn_max <- boerates_yn %>%  select(Date,bank_rate_n,Year)
+boerates_num <- Rates_data %>% mutate(bank_rate_n = as.numeric(bank_rate)) %>% 
+                 mutate(date = as.Date(Date,"%d%b%Y"),Year = as.numeric(format(Date,'%Y'))) %>% 
+                 select(Date,bank_rate_n,Year)
+boerates_num
 # Provide label for most recent value
-endv <- boerates_yn_max %>% filter(Date == max(Date))
-
+endv <- boerates_num %>% filter(Date == max(Date))
+endv
 # Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 # ℹ Please use `linewidth` instead.
 # Ensure we have now bank rate defined as NUMERIC !!!
