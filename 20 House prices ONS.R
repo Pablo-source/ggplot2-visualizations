@@ -1,6 +1,5 @@
-# R Script: 20 House prices annotations ONS.R
-
-# Date: 13/06/2023
+# R Script: 20 House prices ONS.R
+# Date: 09/06/2023
 # Excel file: "Figure_2__The_average_UK_house_price_was_£285,000_in_March_2023.xls"
 library(readxl)
 library(here)
@@ -45,7 +44,7 @@ names(House_price)
 # Step 2.1 Rename original variables, change column names
 House_priceavg <- House_price %>% 
                   select ( Date = x1, avg_house_price = uk_average_house_price)
-House_priceavg 
+House_priceavg
 
 # Step 2.2 We must change house price to be numeric !!!
 House_priceavg_num <- House_priceavg %>% 
@@ -135,24 +134,18 @@ endv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(datef =
 minv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(house_price == min(house_price))
 maxv <- House_prices_chart %>% select(house_price,datef,Year) %>% filter(house_price == max(house_price))
 
-format(value, scientific=FALSE);
-
-House_prices_chart <- House_prices_chart %>%  
-                       mutate(house_pricef = format(house_price, scientific=FALSE))
-House_prices_chart
 
 Housep_chart <- House_prices_chart %>% 
   select(datef,house_price,Year) %>% 
   ggplot(aes(x = datef, y = house_price)) +
   geom_line(color="#B94A81",size =2, linetype = 1) + 
-  scale_y_continuous(breaks = seq(0, 300000, by = 20000)) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 300000)) +
+  scale_y_continuous(breaks = seq(0, 300000, by = 8000)) +
   theme_bw() +
   
   labs(title = "ONS Average UK House prices",     # Include titles and subtitles and also X and Y Axis titles
        subtitle ="From January 2005 to March 2023",
        # Change X and Y axis labels
-       x = "Period", y = "Average House price") +
+       x = "Average House price", y = "Period") +
   # End value label (date and value)
      geom_text(data = endv, aes(label = datef), hjust =2.8, vjust = 1.5) +
      geom_text(data = endv, aes(label = paste0("Most recent value: ",house_price), hjust = 0.7, vjust = 1.5)) +

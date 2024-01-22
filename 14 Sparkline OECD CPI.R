@@ -5,7 +5,6 @@
 # DATA: OECD Inflation (CPI) 
 
 # 1. Load required packages
-if (!require("pacman")) install.packages("pacman")
 pacman::p_load(here,tidyverse,ggthemes,reshape,RCurl,janitor)
 
 # 2. Get data into R

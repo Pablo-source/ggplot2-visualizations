@@ -2,19 +2,27 @@
 # Date: 01/05/2023
 # Excel file: "BoE-Database_export.xlsx"
 pacman::p_load(readxl,here,dplyr,janitor,tidyverse)
+
 Excel_file <-list.files (path = "./data" ,pattern = "xlsx$")
 Excel_file
 
 Path <- here()
 Path
 
+# List excel files on Data sub-directory
 # Data from BoE can be dowloaded as .xls file
+# Download data file: 
+
 # Section 01: Dowload data from BoE Website
 
 # Download it from the  "Official Bank Rate" chart on BoE website: 
 # https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate
 # Download icon on the chart > Save as >XLSX
 
+# Saved this file locally as baserate_29APR2023.xls
+# You can also download it as baserate.xls from the above BoE website
+
+# Save it as baserate_29APR2023.xls
 # Step 01
 list.files (path = "./data" ,pattern = "xlsx$")
 # [1] "01 baserate CLEAN.xls"  "baserate_29APR2023.xls"
@@ -22,42 +30,44 @@ list.files (path = "./data" ,pattern = "xlsx$")
 # Step 02 List tabs from above Excel file to know which tab to import
 excel_sheets("./data/BoE-Database_export.xlsx")
 
-# Step 01 Load Excel file with BoE interest rates
+# There is only one tab containing all data
+# [1] "amCharts"
+
 # This data mimics the charts on their website, the plot starts on 2008-05-01
 boerates <- read_excel(here("data", "BoE-Database_export.xlsx"), sheet = 1) %>% 
   clean_names()
 boerates
 
-# IMPORTANT< we must change bank_rate to be numeric !!!
-boerates_num <- boerates %>% 
-                mutate(bank_rate_n = as.numeric(bank_rate))
 
 # Step 04 Read in data from Row 7 onwards
 # Transform (date as <dttm> into Date as <date>format)
+
 library(lubridate)
 
-boerates_y <- boerates_num  %>% 
+boerates_y <- boerates  %>% 
               mutate(Date = as.Date(date,"%d%b%Y"),
                      Year = as.numeric(format(Date,'%Y'))) 
 boerates_y
+
 head(boerates_y)
 tail(boerates_y)
 
-# Subset required variables for charts (Date,bank_rate_n,Year)
-boerates_yn <- boerates_y %>% select(Date,bank_rate_n,Year)
-
 # Section 02: Create plot
+
 # Setup initial chart to start applying some theme
 # Get  Specific HEX colours colour from images: 
 #   https://pinetools.com/image-color-picker
+#  1. Save plot as png: BoE-Database_export.jpg
+# 2. Import image using above website:
+# 3. Click on different plot areas to obtain Line and Background HEX colours
 
 # Colours for: 
 # Line chart:  #3cd7d9
 # Background:  #12273f
 
-Rates_chart <- boerates_yn %>% 
-               select(Date,bank_rate_n,Year) %>% 
-               ggplot(aes(x = Date, y = bank_rate_n, group = Year )) +
+Rates_chart <- boerates_y %>% 
+               select(Date,bank_rate,Year) %>% 
+               ggplot(aes(x = Date, y = bank_rate, group = Year )) +
                geom_line(color="#3cd7d9",size =2, linetype = 1) + 
   theme_bw() +
   # Add specific background colour extracted from chart
@@ -67,7 +77,7 @@ Rates_chart <- boerates_yn %>%
 
 # Include titles and subtitles and also X and Y Axis titles
   labs(title = "Bank of England Official Bank Rate",
-       subtitle ="From 1st Nov 2000 to 8th August 2023",
+       subtitle ="From 1st May 2018 to 27th April 2023",
        # Change X and Y axis labels
        x = "Bank Rate", 
        y = "Period") 
@@ -91,7 +101,7 @@ Rates_chart
 # Second lockdown: A second national lockdown began on 5 November 2020 in response to rising cases in the UK
 # Third Lockdown: On Monday 4 January 2021 at 8pm, the Prime Minister announced the third national lockdown
 
-Rates_chart_01 <- boerates_y %>% 
+Rates_chart <- boerates_y %>% 
   select(Date,bank_rate,Year) %>% 
   ggplot(aes(x = Date, y = bank_rate, group = Year )) +
   geom_line(color="#3cd7d9",size =1, linetype = 1) + 
@@ -104,14 +114,14 @@ Rates_chart_01 <- boerates_y %>%
   
   # Include titles and subtitles and also X and Y Axis titles
   labs(title = "Bank of England Official Bank Rate",
-       subtitle ="From 1st Nov 2000 to 8th August 2023",
+       subtitle ="From 1st May 2018 to 27th April 2023",
        # Change X and Y axis labels
        x = "Period", 
        y = "Bank Rate") +
   
-# Add reference lines
-# First lockdown: On 23 March 2020
-geom_vline(xintercept = as.numeric(as.Date("2020-03-23")),color="#adaade",linetype=4) +
+  # Add reference lines
+  # First lockdown: On 23 March 2020
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-23")),color="#adaade",linetype=4) +
 # Second lockdown: On 23 March 2020
 geom_vline(xintercept = as.numeric(as.Date("2020-11-05")),color="#adaade",linetype=4) +
 # Third lockdown: On 23 March 2020
@@ -122,72 +132,10 @@ geom_vline(xintercept = as.numeric(as.Date("2021-01-04")),color="#adaade",linety
   annotate(geom = "text", x = as.Date("2021-10-25"),
            y = 12.5, label = "Third Lockdown \n 04-01-2021",color="#CCFFE5",size =3)
 
-Rates_chart_01
+Rates_chart 
 
 # Save output plot 
-ggsave("plots/01 Bank of England Bank Rates and covid lockdowns.png", width = 10, height = 6) 
-
-# Create NEW CHART IMPROVING VISUALS 
+ggsave("01 Bank of England Bank Rates and covid lockdowns.png", width = 10, height = 6) 
 
 
-# PLOT 02 - Improve  initial chart 
 
-# New elements added to the theme() function
-#   1. Remove default chart area grey color background, make it white instead
-#       panel.background = element_rect(fill = NA), 
-#   2. Remove X axis grid lines, x axis lines provide sufficient guideline to identify (bank interest rate) value 
-#         panel.grid.major.x = element_blank(),
-#         panel.grid.minor.x = element_blank(), 
-#   3. Keep just major Y axis grid lines, use black colour to match axis and title font colour
-#         panel.grid.major.y = element_line(colour = "black")
-
-# 4. Added custom Title to x and Y axis using labs() function
-# labs(title = "BoE Interest rates reach 4.5% in May 2023",
-#     subtitle ="Eleventh interest rate increase since Jan 2022",
-#     y = "Interest rate %",
-#     x = "Year")
-
-# 5. Provide label to latest data point 
-Rates_data<- boerates_y %>% select(Date,bank_rate,Year) 
-Rates_data
-
-str(Rates_data)
-boerates_num <- Rates_data %>% mutate(bank_rate_n = as.numeric(bank_rate))
-boerates_y <- boerates_num  %>%  mutate(date = as.Date(Date,"%d%b%Y"),Year = as.numeric(format(Date,'%Y'))) 
-# Subset required variables for charts (Date,bank_rate_n,Year)
-boerates_yn <- boerates_y %>% select(Date,bank_rate_n,Year)
-boerates_yn_max <- boerates_yn %>%  select(Date,bank_rate_n,Year)
-# Provide label for most recent value
-endv <- boerates_yn_max %>% filter(Date == max(Date))
-
-# Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-# ℹ Please use `linewidth` instead.
-# Ensure we have now bank rate defined as NUMERIC !!!
-str(boerates_yn)
-
-# Thursday 3 August 2023 22:36, UK
-# Bank of England increases interest rate for 14th time in a row to 5.25%
-
-BoErates <- boerates_yn %>% 
-  select(Date,bank_rate_n,Year) %>% 
-  ggplot(aes(x = Date, y = bank_rate_n, group = Year )) +
-  geom_line(color="#3cd7d9",linewidth =2, linetype = 1) +  
-  # End value geom_point
-  geom_point(data = endv, col = 'blue') +
-  # End value label (date and value)
-  geom_text(data = endv, aes(label = Date), hjust =1.9, nudge_x = 5,vjust = 1.0) +
-  geom_text(data = endv, aes(label = paste0("Interest rate value: ",bank_rate_n), hjust = 1.5, nudge_x = 5,vjust = -1)) +
-  scale_x_date(date_labels="%Y",date_breaks  ="2 year") +
-  theme(
-    panel.background = element_rect(fill = NA), # Remove default grey color background make it white 
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.major.y = element_line(colour = "black")
-  )    +
-  labs(title = "Bank of England Official Bank Rate",
-       subtitle ="From 1st Nov 2000 to 8th August 2023",
-       y = "Interest rate %",
-       x = "Year")
-BoErates
-
-ggsave("plots/02_BoE_Interest_rate_Aug2023.png", width = 10, height = 6) 
