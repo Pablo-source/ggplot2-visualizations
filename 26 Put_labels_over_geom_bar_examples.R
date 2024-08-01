@@ -28,7 +28,7 @@ DISP <- ggplot(df,aes(x=drug, y = dose, fill = subject)) +
  
 DISP    
 
-ggsave("39 Geom_bar_charts_labels_example.png", width = 10, height = 6) 
+ggsave("plots/39 Geom_bar_charts_labels_example.png", width = 10, height = 6) 
 
 # This is an example with real data from 2019 population countries from WDI website
 # Script to get repeated values: Year <-rep("2019", each=3)
@@ -64,7 +64,7 @@ COUNTRIES_chart <- ggplot(popc_sorted,aes(x=Countries, y = Population, fill = Ye
   ggtitle("Adding mark label to ggplot") 
 COUNTRIES_chart  
 
-ggsave("40 Countries_pop_labels_geom_bar.png", width = 10, height = 6) 
+ggsave("plots/40 Countries_pop_labels_geom_bar.png", width = 10, height = 6) 
 
 
 # 3. Bar chart displaying countries population figures in descending order
@@ -85,5 +85,5 @@ COUNTRIES_sorted <- ggplot(popc_sorted,
   ggtitle("Adding mark label to geom_bar() and display results sort descending order") 
 COUNTRIES_sorted
 
-ggsave("41 Countries_pop_labels_geom_bar_sorted.png", width = 10, height = 6) 
+ggsave("plots/41 Countries_pop_labels_geom_bar_sorted.png", width = 10, height = 6) 
 
