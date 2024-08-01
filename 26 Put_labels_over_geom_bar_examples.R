@@ -4,7 +4,12 @@
 # Reference
 # https://stackoverflow.com/questions/12018499/how-to-put-labels-over-geom-bar-for-each-bar-in-r-with-ggplot2
 
+# Avoid scientific notation in the charts created.
+options(scipen=999)
 library(tidyverse)
+
+# 1. Standard geom bar with labels over each bar in ggplot2.
+
 df <- cbind.data.frame(drug=c("D1","D2", "D3","D4","D5"),
                         dose=c(4.2,10,29.5,24,23),
                  subject = c("Sample1","Sample2","Sample1",
@@ -35,6 +40,8 @@ ggsave("39 Geom_bar_charts_labels_example.png", width = 10, height = 6)
 # WDI_population
 
 
+# 2. Bar chart displaying countries population figures 
+
 Countries <-c("Armenia","Aruba","Australia","Austria","Azerbaijan","Bahrain","Bangladesh",
               "Barbados","Belarus","Belgium","Belize","Benin","Bermuda")
 length(Countries)
@@ -59,7 +66,9 @@ COUNTRIES_chart
 
 ggsave("40 Countries_pop_labels_geom_bar.png", width = 10, height = 6) 
 
-# 3. Display previous chart in ascending order
+
+# 3. Bar chart displaying countries population figures in descending order
+
 # https://stackoverflow.com/questions/16961921/plot-data-in-descending-order-as-appears-in-data-frame
 # using the reorder() function
 # We use the reorder function to 
