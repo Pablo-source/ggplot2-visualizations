@@ -122,7 +122,7 @@ First check available files in /data sub-folder. We want to import the Excel fil
 
 ```{r list excel files data folder, echo=FALSE}
 # pacman::p_load(readxl,here,dplyr,janitor)
-
+library(readxl)
 Excel_file <-list.files (path = "./data" ,pattern = "xlsx$")
 Excel_file
 
@@ -131,11 +131,13 @@ Excel_tabs <- excel_sheets("./data/RTT_TS_data.xlsx")
 Excel_tabs
 ```
 
-### 4.1 List files in Downloads folder
+### 4.1 Read in Excel file into R
 
 Then we read this *RTT_TS_data.xlsx* file into R, using read_excel() file
 
 ```{r}
+library(dplyr)
+library(janitor)
 RTT_Data_imported <- read_excel(here("data","RTT_TS_data.xlsx"),sheet = "Full Time Series",
                        skip = 10 , na = "-") %>% 
   clean_names()
