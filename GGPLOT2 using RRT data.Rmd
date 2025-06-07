@@ -131,3 +131,26 @@ Excel_tabs <- excel_sheets("./data/RTT_TS_data.xlsx")
 Excel_tabs
 ```
 
+### 4.1 List files in Downloads folder
+
+Then we read this *RTT_TS_data.xlsx* file into R, using read_excel() file
+
+```{r}
+RTT_Data_imported <- read_excel(here("data","RTT_TS_data.xlsx"),sheet = "Full Time Series",
+                       skip = 10 , na = "-") %>% 
+  clean_names()
+
+RTT_data_sub <- RTT_Data_imported %>% 
+  select(x2,total_waiting_mil)
+RTT_data_sub  
+
+RTT_data_subset <- RTT_data_sub %>% select(Date = x2, Total_waiting = total_waiting_mil)
+RTT_data_subset
+
+RTT_data <- RTT_data_subset %>% 
+  select(Date, Total_waiting_M = Total_waiting) %>% 
+  na.omit()
+RTT_data
+
+```
+
