@@ -45,7 +45,7 @@ In particular we will be focusing on the England-level time series. The file can
 England-level time series: 
 - RTT Overview Timeseries Including Estimates for Missing Trusts Nov2022 (XLS,98k)
 
-![RTT main stats website](C:/R_WDP/ggplot2-visualizations/plots/RTT data website.png)
+![RTT main stats website](/home/pablo/Documents/Pablo_ubuntu/Repos/Pablo_source_repo/ggplot2-visualizations/images/NHS_England_RTT_Waiting_Times_website.png)
 To download the England level time series we can look at the URL address where the .csv file is saved: 
 
 In Firefox we do that by by clicking on the three lines menus on the top right corner, then selecting More tools and finally we selet  **Page Source**
@@ -114,4 +114,20 @@ As we can see below, the Excel file has been downloaded to our data folder
 
 ## 4. Import Excel file into R 
 
+### 4.1 List files in Downloads folder
+
 We need to skip some rows and select just a handful of columns from the original Excel file we import into R. We use 
+
+First check available files in /data sub-folder. We want to import the Excel file called "RTT_TS_data.xlsx"
+
+```{r list excel files data folder, echo=FALSE}
+# pacman::p_load(readxl,here,dplyr,janitor)
+
+Excel_file <-list.files (path = "./data" ,pattern = "xlsx$")
+Excel_file
+
+# [1] "RTT_TS_data.xlsx"
+Excel_tabs <- excel_sheets("./data/RTT_TS_data.xlsx")
+Excel_tabs
+```
+
