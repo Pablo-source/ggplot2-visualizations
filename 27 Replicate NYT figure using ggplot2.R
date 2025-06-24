@@ -1,6 +1,7 @@
 # Replicating NY plot
 # Youtube video: Riffomonas Project: "Recreating a New York Times bar chqart using ggplot package"(CC332)
 # https://www.youtube.com/watch?v=8_2frsX5MwM
+# File: 27 replicate NYT figure using ggplot2.R
 
 # 1. Load required libraries
 library(tidyverse)
